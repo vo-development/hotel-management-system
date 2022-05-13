@@ -27,20 +27,6 @@ public class LoginController extends BaseController {
     @FXML
     public void btnLoginClick(ActionEvent actionEvent) {
 
-        var userName = txt_userName.getText();
-        var password = txt_password.getText();
-
-        if (userDAO.existUserByUsernameAndPassword(userName, password)) {
-
-            var stage = (Stage) txt_userName.getScene().getWindow();
-
-            var mainWindow = ViewLoader.load("Main", null);
-
-            stage.setScene(new Scene(mainWindow));
-
-
-        } else
-            new Alert(Alert.AlertType.ERROR, "Invalid Username or Password!").showAndWait();
 
     }
 

@@ -1,6 +1,5 @@
 import controller.LoginController;
 import dal.dao.UserDAO;
-import dal.dao.UserDAOImpl;
 import helper.ViewLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -12,7 +11,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage stage) {
 
-        UserDAO userDAO = new UserDAOImpl();
+        UserDAO userDAO = new UserDAO();
 
         LoginController controller = new LoginController(userDAO);
 
