@@ -8,7 +8,12 @@ import java.sql.SQLException;
 public class DBConnection {	
 	
 	private static Connection connection = null;
-	
+
+	private static String URL = "jdbc:mysql://localhost:3306/hms_db";
+	private static String USER_NAME = "root";
+	private static String PASSWORD = "1234";
+
+
 	public static Connection getConnection() {
 
 		if (connection == null) {
@@ -17,8 +22,7 @@ public class DBConnection {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/hms_db","root","1234");
-			
+			connection= DriverManager.getConnection(URL,USER_NAME,PASSWORD);
 			
 			}catch(ClassNotFoundException e ) {
 				System.out.println("Class Not Found");
