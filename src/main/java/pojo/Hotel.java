@@ -20,6 +20,9 @@ public class Hotel {
 		this.employee=employee;
 		
 	}
+	public Hotel (String name) {
+		this.name=name;
+	}
 	
 	public Hotel(int id, String name) {
 		this.id=id;

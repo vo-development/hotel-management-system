@@ -145,7 +145,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			statement.setObject(4, customer.getPhoneNo());
 			statement.setObject(5, customer.getTcNO());
 			statement.setObject(6, customer.getAdress());
-			statement.setObject(7, customer.getAdress());
+			statement.setObject(7, customer.getId());
 			
 			
 			statement.execute();

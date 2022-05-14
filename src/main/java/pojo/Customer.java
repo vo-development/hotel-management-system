@@ -15,6 +15,17 @@ public class Customer {
 	private String tcNO;
 	
 	private String adress;
+	
+	public Customer( int id,String name, String password, String mail, String phoneNo, String idNo, String adress) {
+		super();
+		this.id=id;
+		this.name = name;
+		this.password = password;
+		this.mail = mail;
+		this.phoneNo = phoneNo;
+		this.tcNO = idNo;
+		this.adress = adress;
+	}
 
 	public Customer( String name, String password, String mail, String phoneNo, String idNo, String adress) {
 		super();
