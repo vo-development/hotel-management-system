@@ -17,7 +17,7 @@ public class DBConnection {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelreservation","root","12345678");
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/hms_db","root","1234");
 			
 			
 			}catch(ClassNotFoundException e ) {
