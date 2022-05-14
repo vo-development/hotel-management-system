@@ -31,15 +31,16 @@ public class CustomerRegisterController extends BaseController {
     @FXML
     private TextField txt_tc;
 
-    private final String name;
-    private final String password;
-    private final String mail;
-    private final String phone;
-    private final String address;
-    private final String tcNo;
+    private  String name;
+    private  String password;
+    private  String mail;
+    private  String phone;
+    private  String address;
+    private  String tcNo;
 
+    @FXML
+    public void initialize() {
 
-    public CustomerRegisterController(){
         this.name = txt_name.getText();
         this.password = pwd_pass.getText();
         this.mail = txt_mail.getText();
@@ -48,8 +49,10 @@ public class CustomerRegisterController extends BaseController {
         this.tcNo = txt_tc.getText();
     }
 
-
     private boolean isBlank(){
+
+        System.out.println(password.isBlank());
+
         return password.isBlank() ||
                 address.isBlank() ||
                 mail.isBlank() ||
@@ -87,7 +90,6 @@ public class CustomerRegisterController extends BaseController {
     void registerOnClick(ActionEvent event) {
 
         boolean isValid = validInputs();
-
 
         if(isValid){
 
