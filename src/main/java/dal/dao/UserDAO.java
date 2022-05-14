@@ -153,6 +153,5 @@ public class UserDAO implements BaseDAO<User> {
 		}
 	}
 
- //  Boolean existUserByUsernameAndPassword(String username,String password);
 
 }

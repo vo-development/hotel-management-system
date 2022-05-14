@@ -1,5 +1,7 @@
 package dal.dao;
 
+import dal.DBConnection;
+
 import java.sql.Connection;
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package dal.dao;
+package dal;
 
 import java.sql.Connection;
 
@@ -10,13 +10,9 @@ public class DBConnection {
 	private static Connection connection = null;
 	
 	public static Connection getConnection() {
-		
-		
-			
-		
+
 		if (connection == null) {
-				
-			
+
 			try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,8 +25,7 @@ public class DBConnection {
 			}catch(SQLException e ) {
 				System.out.println("Cannot connecting");;
 			}
-		
-			
+
 		}
 		return connection;
 		
