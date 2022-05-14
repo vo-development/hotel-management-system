@@ -12,7 +12,7 @@ public class Customer {
 	
 	private String phoneNo;
 	
-	private String idNo;
+	private String tcNO;
 	
 	private String adress;
 
@@ -22,7 +22,7 @@ public class Customer {
 		this.password = password;
 		this.mail = mail;
 		this.phoneNo = phoneNo;
-		this.idNo = idNo;
+		this.tcNO = idNo;
 		this.adress = adress;
 	}
 	public Customer() {
@@ -69,12 +69,12 @@ public class Customer {
 		this.phoneNo = phoneNo;
 	}
 
-	public String getIdNo() {
-		return idNo;
+	public String getTcNO() {
+		return tcNO;
 	}
 
-	public void setIdNo(String idNo) {
-		this.idNo = idNo;
+	public void setTcNO(String tcNO) {
+		this.tcNO = tcNO;
 	}
 
 	public String getAdress() {
@@ -87,7 +87,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", password=" + password + ", mail=" + mail + ", phoneNo="
-				+ phoneNo + ", idNo=" + idNo + ", adress=" + adress + "]";
+				+ phoneNo + ", tcNo=" + tcNO + ", adress=" + adress + "]";
 	}
 	
 	

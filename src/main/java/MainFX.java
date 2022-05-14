@@ -11,10 +11,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage stage) {
 
-        UserDAO userDAO = new UserDAO();
-
-        LoginController controller = new LoginController(userDAO);
-
+        LoginController controller = new LoginController();
 
         Parent parent = ViewLoader.load("Login", controller);
 
