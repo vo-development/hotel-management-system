@@ -6,7 +6,7 @@
 
 **1. Projeyi klonlama**
 ```bash
-git clone https://github.com/onurcantimur/javafx-mvc
+git clone https://github.com/vo-development/hotel-management-system.git
 ```
 **2. Docker ile veritabanı kurulumu**
 ***2.1 İlk Kurulum İçin:***
