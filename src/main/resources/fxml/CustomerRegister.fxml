@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -12,7 +11,7 @@
       <TextField fx:id="txt_phone" layoutX="219.0" layoutY="210.0" promptText="Telefon" />
       <TextField fx:id="txt_address" layoutX="219.0" layoutY="256.0" promptText="Adres" />
       <Button layoutX="266.0" layoutY="291.0" mnemonicParsing="false" onAction="#registerOnClick" prefHeight="33.0" prefWidth="68.0" text="Kaydet" />
-      <PasswordField fx:id="pwd_pass" layoutX="219.0" layoutY="118.0" promptText="Parola" />
       <TextField fx:id="txt_tc" layoutX="219.0" layoutY="35.0" promptText="TC Numarası" />
+      <TextField fx:id="pwd_pass" layoutX="219.0" layoutY="118.0" promptText="gecici parola" />
    </children>
 </AnchorPane>
