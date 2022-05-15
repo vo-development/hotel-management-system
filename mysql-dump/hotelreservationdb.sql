@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `calisanotel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `calisanotel` (
-  `calisan_id` int DEFAULT NULL,
-  `otel_id` int DEFAULT NULL,
-  KEY `calisan_id` (`calisan_id`),
-  KEY `otel_id` (`otel_id`),
-  CONSTRAINT `calisanotel_ibfk_2` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`),
-  CONSTRAINT `calisanotel_ibfk_3` FOREIGN KEY (`calisan_id`) REFERENCES `kullanici` (`id`)
+                               `calisan_id` int DEFAULT NULL,
+                               `otel_id` int DEFAULT NULL,
+                               KEY `calisan_id` (`calisan_id`),
+                               KEY `otel_id` (`otel_id`),
+                               CONSTRAINT `calisanotel_ibfk_2` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`),
+                               CONSTRAINT `calisanotel_ibfk_3` FOREIGN KEY (`calisan_id`) REFERENCES `kullanici` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,11 +49,11 @@ DROP TABLE IF EXISTS `kullanici`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kullanici` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `isim` text NOT NULL,
-  `sifre` text NOT NULL,
-  `email` text NOT NULL,
-  PRIMARY KEY (`id`)
+                             `id` int NOT NULL AUTO_INCREMENT,
+                             `isim` text NOT NULL,
+                             `sifre` text NOT NULL,
+                             `email` text NOT NULL,
+                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,12 +75,12 @@ DROP TABLE IF EXISTS `kullanicirol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kullanicirol` (
-  `kullanici_id` int NOT NULL,
-  `rol_id` int NOT NULL,
-  KEY `kullanici_id` (`kullanici_id`,`rol_id`),
-  KEY `rol_id` (`rol_id`),
-  CONSTRAINT `kullanicirol_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roller` (`id`),
-  CONSTRAINT `kullanicirol_ibfk_3` FOREIGN KEY (`kullanici_id`) REFERENCES `kullanici` (`id`)
+                                `kullanici_id` int NOT NULL,
+                                `rol_id` int NOT NULL,
+                                KEY `kullanici_id` (`kullanici_id`,`rol_id`),
+                                KEY `rol_id` (`rol_id`),
+                                CONSTRAINT `kullanicirol_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roller` (`id`),
+                                CONSTRAINT `kullanicirol_ibfk_3` FOREIGN KEY (`kullanici_id`) REFERENCES `kullanici` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -102,14 +102,14 @@ DROP TABLE IF EXISTS `musteri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `musteri` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `isim` text NOT NULL,
-  `sifre` text NOT NULL,
-  `mail` text NOT NULL,
-  `telefon_no` varchar(25) NOT NULL,
-  `kimlik_no` varchar(25) NOT NULL,
-  `adres` text NOT NULL,
-  PRIMARY KEY (`id`)
+                           `id` int NOT NULL AUTO_INCREMENT,
+                           `isim` text NOT NULL,
+                           `sifre` text NOT NULL,
+                           `mail` text NOT NULL,
+                           `telefon_no` varchar(25) NOT NULL,
+                           `kimlik_no` varchar(25) NOT NULL,
+                           `adres` text NOT NULL,
+                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,18 +131,18 @@ DROP TABLE IF EXISTS `oda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `oda` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `numara` int NOT NULL,
-  `otel_id` int NOT NULL,
-  `rezervasyon_id` int DEFAULT NULL,
-  `yatak_sayisi` int NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `rezz` (`rezervasyon_id`),
-  KEY `rezervasyon_id` (`rezervasyon_id`),
-  KEY `otel_id` (`otel_id`),
-  KEY `id` (`id`),
-  CONSTRAINT `oda_ibfk_3` FOREIGN KEY (`rezervasyon_id`) REFERENCES `rezervasyon` (`id`),
-  CONSTRAINT `oda_ibfk_4` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`)
+                       `id` int NOT NULL AUTO_INCREMENT,
+                       `numara` int NOT NULL,
+                       `otel_id` int NOT NULL,
+                       `rezervasyon_id` int DEFAULT NULL,
+                       `yatak_sayisi` int NOT NULL,
+                       PRIMARY KEY (`id`),
+                       UNIQUE KEY `rezz` (`rezervasyon_id`),
+                       KEY `rezervasyon_id` (`rezervasyon_id`),
+                       KEY `otel_id` (`otel_id`),
+                       KEY `id` (`id`),
+                       CONSTRAINT `oda_ibfk_3` FOREIGN KEY (`rezervasyon_id`) REFERENCES `rezervasyon` (`id`),
+                       CONSTRAINT `oda_ibfk_4` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -164,12 +164,12 @@ DROP TABLE IF EXISTS `otel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `otel` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `otel_isim` text NOT NULL,
-  `sehir` text,
-  `ilce` text,
-  `aciklama` text,
-  PRIMARY KEY (`id`)
+                        `id` int NOT NULL AUTO_INCREMENT,
+                        `otel_isim` text NOT NULL,
+                        `sehir` text,
+                        `ilce` text,
+                        `aciklama` text,
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -191,14 +191,14 @@ DROP TABLE IF EXISTS `rezervasyon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rezervasyon` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fiyat` int DEFAULT NULL,
-  `baslangic_tarihi` date NOT NULL,
-  `bitis_tarihi` date NOT NULL,
-  `musteri_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_rezervasyon_1_idx` (`musteri_id`),
-  CONSTRAINT `rezervasyon_ibfk_1` FOREIGN KEY (`musteri_id`) REFERENCES `musteri` (`id`)
+                               `id` int NOT NULL AUTO_INCREMENT,
+                               `fiyat` int DEFAULT NULL,
+                               `baslangic_tarihi` date NOT NULL,
+                               `bitis_tarihi` date NOT NULL,
+                               `musteri_id` int DEFAULT NULL,
+                               PRIMARY KEY (`id`),
+                               KEY `fk_rezervasyon_1_idx` (`musteri_id`),
+                               CONSTRAINT `rezervasyon_ibfk_1` FOREIGN KEY (`musteri_id`) REFERENCES `musteri` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,9 +220,9 @@ DROP TABLE IF EXISTS `roller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roller` (
-  `id` int NOT NULL,
-  `rol_isim` varchar(50) NOT NULL,
-  KEY `id` (`id`)
+                          `id` int NOT NULL,
+                          `rol_isim` varchar(50) NOT NULL,
+                          KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

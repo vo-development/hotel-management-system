@@ -26,7 +26,7 @@ public class LoginController extends BaseController {
 
         else {
 
-            var loginWindow = ViewLoader.load("UserLogin", new UserController());
+            var loginWindow = ViewLoader.load("UserLogin", new UserLoginController());
             stage.setScene(new Scene(loginWindow));
         }
 

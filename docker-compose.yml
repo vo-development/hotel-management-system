@@ -7,12 +7,11 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./mysql-dump/hotelreservationdb.sql:/docker-entrypoint-initdb.d/hotelreservationdb.sql
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=hms_db
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    command: ['--default-authentication-plugin=mysql_native_password', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
