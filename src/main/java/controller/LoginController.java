@@ -42,6 +42,8 @@ public class LoginController extends BaseController {
 
         else{
 
+
+
             var mainWindow = ViewLoader.load("Main", null);
             stage.setScene(new Scene(mainWindow));
         }

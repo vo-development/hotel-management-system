@@ -1,25 +1,27 @@
 package controller;
 
 import dal.dao.CustomerDAO;
+import helper.ViewLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.stage.Stage;
 import org.apache.commons.validator.routines.EmailValidator;
-import org.apache.commons.validator.routines.InetAddressValidator;
 
 import pojo.Customer;
 
 
 public class CustomerRegisterController extends BaseController {
 
-//buda degisiklik yaptim ama ise yaramadi zaten hepsi true donuyor
+//buda degisiklik yaptim ama ise yaramadi zaten hepsi true donuyor NOT: BİR DOST
     @FXML
-    private TextField pwd_pass;
+    private TextField pwd_pass; // PasswordField olmasi lazim
 
     @FXML
     private TextField txt_address;
@@ -43,25 +45,10 @@ public class CustomerRegisterController extends BaseController {
     private  String address;
     private  String tcNo;
 
-    @FXML
-    public void initialize() {
-
-        this.name = txt_name.getText();
-        this.password = pwd_pass.getText();
-        this.mail = txt_mail.getText();//bitti
-        this.phone = txt_phone.getText();
-        this.address = txt_address.getText();//bitti
-        this.tcNo = txt_tc.getText();
-     
-    }
 
     private boolean isBlank(){
 
- 
-        System.out.println(password.isBlank());
-        System.out.println(name.isBlank());
-
-
+        // isBlank sadece bos olunca calisir
         return password.isBlank() ||
                 address.isBlank() ||
                 mail.isBlank() ||
@@ -76,8 +63,10 @@ public class CustomerRegisterController extends BaseController {
 
     }
 
+
+
     private boolean validInputs(){
-        
+
         Pattern kontrol=Pattern.compile("5[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
         Matcher phoneVeri=kontrol.matcher(phone);
 
@@ -99,16 +88,6 @@ public class CustomerRegisterController extends BaseController {
             showAlert("Geçersiz Email !");
             return false;
         }
-      
-        InetAddressValidator adressValidator=InetAddressValidator.getInstance();
-        var adressIsValid=adressValidator.isValid(address);
-
-        if(!adressIsValid){
-            showAlert("Geçersiz adress !");
-            return false;
-        }
-       
-
 
 
         return true;
@@ -116,6 +95,13 @@ public class CustomerRegisterController extends BaseController {
 
     @FXML
     void registerOnClick(ActionEvent event) {
+
+        this.name = txt_name.getText();
+        this.password = pwd_pass.getText();
+        this.mail = txt_mail.getText();//bitti
+        this.phone = txt_phone.getText();
+        this.address = txt_address.getText();//bitti
+        this.tcNo = txt_tc.getText();
 
         boolean isValid = validInputs();
 
@@ -125,10 +111,19 @@ public class CustomerRegisterController extends BaseController {
 
             Customer customer = new Customer(name,password,mail,phone,tcNo,address);
 
+            System.out.println("Customer: "+customer);
+
             var result = customerDAO.insert(customer);
 
-            if(result)
+            if(result){
+
                 showAlert("Kayıt Eklendi!");
+
+                var stage = (Stage) txt_name.getScene().getWindow();
+                var loginWindow = ViewLoader.load("Login",new LoginController());
+                stage.setScene(new Scene(loginWindow));
+            }
+
             else {
                 showAlert("Kayıt eklenemedi!");
             }
