@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="700.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tbl_hotels" layoutX="-4.0" layoutY="-3.0" prefHeight="709.0" prefWidth="1030.0">
+         <columns>
+            <TableColumn fx:id="col_name" prefWidth="75.0" text="Otel Adı" />
+            <TableColumn fx:id="col_sehir" prefWidth="139.0" text="Şehir" />
+            <TableColumn fx:id="col_ilce" prefWidth="59.0" text="İlçe" />
+            <TableColumn fx:id="col_aciklama" minWidth="0.0" prefWidth="159.0" text="Açıklama" />
+         </columns>
+      </TableView>
+   </children>
+</Pane>

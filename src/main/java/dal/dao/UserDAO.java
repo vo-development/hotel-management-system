@@ -98,15 +98,14 @@ public class UserDAO implements BaseDAO<User> {
 		
 		
 		try {
-			String insertQuery="INSERT INTO kullanici (id,isim,sifre,mail) values (?,?,?,?)";
+			String insertQuery="INSERT INTO kullanici (isim,sifre,mail) values (?,?,?)";
 					
 					
 			
 			statement=con.prepareStatement(insertQuery);
-			statement.setObject(1, user.getId());
-			statement.setObject(2, user.getUsername());
-			statement.setObject(3, user.getPassword());
-			statement.setObject(4, user.getMail());
+			statement.setObject(1, user.getUsername());
+			statement.setObject(2, user.getPassword());
+			statement.setObject(3, user.getMail());
 			
 			statement.execute();
 			

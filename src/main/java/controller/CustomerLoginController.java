@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -38,12 +37,12 @@ public class CustomerLoginController extends BaseController {
         if(source.equals(btn_register)){
             var registerController = new CustomerRegisterController();
             var registerWindow = ViewLoader.load("CustomerRegister",registerController);
-            stage.setScene(new Scene((Parent) registerWindow));
+            stage.setScene(new Scene(registerWindow));
         }
 
         else{
 
-            var mainWindow = ViewLoader.load("Main", new MainController());
+            var mainWindow = ViewLoader.load("CustomerMain", new CustomerMainController());
             stage.setScene(new Scene(mainWindow));
         }
 

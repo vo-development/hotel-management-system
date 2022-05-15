@@ -89,6 +89,46 @@ public class RoomDAO implements BaseDAO<Room>{
 		return rooms;
 	}
 
+	public HashSet<Room> findAllByHotelId(int hotelId) {
+
+		HashSet<Room> rooms = new HashSet<Room>();
+
+		try {
+			String findAllQuery = "SELECT * from oda WHERE otel_id=?";
+			statement=con.prepareStatement(findAllQuery);
+			statement.setInt(1,hotelId);
+			result=statement.executeQuery();
+
+			Room room;
+
+			while(result.next()) {
+				room = new Room();
+
+				int id= result.getInt("id");
+				int number = result.getInt("numara");
+				int reservationId= result.getInt("rezervasyon_id");
+				int bedQuantity= result.getInt("yatak_sayisi");
+
+				room.setId(id);
+				room.setNumber(number);
+				room.setHotelId(hotelId);
+				room.setReservationId(reservationId);
+				room.setBedQuantity(bedQuantity);
+
+				rooms.add(room);
+
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+
+		return rooms;
+	}
+
 	@Override
 	public boolean insert(Room room) {
 			
