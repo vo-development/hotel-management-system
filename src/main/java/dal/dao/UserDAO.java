@@ -98,7 +98,7 @@ public class UserDAO implements BaseDAO<User> {
 		
 		
 		try {
-			String insertQuery="INSERT INTO kullanici (isim,sifre,mail) values (?,?,?)";
+			String insertQuery="INSERT INTO kullanici (isim,sifre,email) values (?,?,?)";
 					
 					
 			
