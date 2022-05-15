@@ -9,13 +9,16 @@ public class Room {
 	private int hotelId;
 	
 	private int reservationId;
+	
+	private int bedQuantity;
 
-	public Room(int id, int number, int hotelId, int reservationId) {
+	public Room(int id, int number, int hotelId, int reservationId, int bedQuantity) {
 		super();
 		this.id = id;
 		this.number = number;
 		this.hotelId=hotelId;
 		this.reservationId = reservationId;
+		this.bedQuantity=bedQuantity;
 	}
 /*	public Room(int number, int hotelId, int reservationId) {
 		super();
@@ -24,11 +27,12 @@ public class Room {
 		this.reservationId = reservationId;
 	}
 	*/
-	public Room(int id,int number,int hotelId) {
+	public Room(int id,int number,int hotelId, int bedQuantity) {
 		super();
 		this.id=id;
 		this.number = number;
 		this.hotelId=hotelId;
+		this.bedQuantity=bedQuantity;
 	}
 	public Room() {
 		
@@ -54,7 +58,7 @@ public class Room {
 		return hotelId;
 	}
 
-	public void setHotel(int hotelId) {
+	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
 
@@ -65,10 +69,16 @@ public class Room {
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
+	public int getBedQuantity() {
+		return bedQuantity;
+	}
+	public void setBedQuantity(int bedQuantity) {
+		this.bedQuantity = bedQuantity;
+	}
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", number=" + number + ", hotelId=" + hotelId + ", reservationId=" + reservationId
-				+ "]";
+				+ ", bedQuantity=" + bedQuantity + "]";
 	}
 
 	

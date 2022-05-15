@@ -8,27 +8,48 @@ public class Hotel {
 	
 	private String name;
 	
-	private HashSet<Room> room;
+	private String sehir;
 	
-	private HashSet<User> employee;
+	private String ilce;
+	
+	private String aciklama;
 	
 	
-	public Hotel(int id, String name, HashSet<Room> room, HashSet<User> employee) {
+	public String getSehir() {
+		return sehir;
+	}
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+	public String getIlce() {
+		return ilce;
+	}
+	public void setIlce(String ilce) {
+		this.ilce = ilce;
+	}
+	public String getAciklama() {
+		return aciklama;
+	}
+	public void setAciklama(String aciklama) {
+		this.aciklama = aciklama;
+	}
+	public Hotel(int id, String name, String sehir, String ilce, String aciklama) {
 		this.id=id;
 		this.name=name;
-		this.room=room;
-		this.employee=employee;
+		this.sehir=sehir;
+		this.ilce=ilce;
+		this.aciklama=aciklama;
+
 		
 	}
-	public Hotel (String name) {
+	public Hotel (String name,String sehir, String ilce, String aciklama) {
 		this.name=name;
+		this.sehir=sehir;
+		this.ilce=ilce;
+		this.aciklama=aciklama;
+
 	}
 	
-	public Hotel(int id, String name) {
-		this.id=id;
-		
-		this.name=name;
-	}
 	public Hotel () {
 		
 	}
@@ -51,32 +72,14 @@ public class Hotel {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	public HashSet<Room> getRoom() {
-		return room;
-	}
-
-
-	public void setRoom(HashSet<Room> room) {
-		this.room = room;
-	}
-
-
-	public HashSet<User> getEmployee() {
-		return employee;
-	}
-
-
-	public void setEmployee(HashSet<User> employee) {
-		this.employee = employee;
-	}
-
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", name=" + name + "]";
+		return "Hotel [id=" + id + ", name=" + name + ", sehir=" + sehir + ", ilce=" + ilce + ", aciklama=" + aciklama
+				+ "]";
 	}
-	
+
+
+
 	
 	
 	

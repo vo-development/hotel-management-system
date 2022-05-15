@@ -29,9 +29,15 @@ public class HotelDAO implements BaseDAO<Hotel> {
 					
 					int hotelId = result.getInt("id");
 					String name = result.getString("otel_isim");
+					String sehir =result.getString("sehir");
+					String ilce = result.getString("ilce");
+					String aciklama = result.getString("aciklama");
 					
 					hotel.setId(hotelId);
 					hotel.setName(name);
+					hotel.setSehir(sehir);
+					hotel.setIlce(ilce);
+					hotel.setAciklama(aciklama);
 				}
 			
 		} catch (SQLException e) {
@@ -57,9 +63,15 @@ public class HotelDAO implements BaseDAO<Hotel> {
 				
 				int id = result.getInt("id");
 				String name = result.getString("otel_isim");
+				String sehir =result.getString("sehir");
+				String ilce = result.getString("ilce");
+				String aciklama = result.getString("aciklama");
 				
 				hotel.setId(id);
 				hotel.setName(name);
+				hotel.setSehir(sehir);
+				hotel.setIlce(ilce);
+				hotel.setAciklama(aciklama);
 				
 				hotels.add(hotel);
 
@@ -80,10 +92,13 @@ public class HotelDAO implements BaseDAO<Hotel> {
 			
 		try {
 			
-			String insertQuery="INSERT INTO otel (otel_isim) VALUES (?)";
+			String insertQuery="INSERT INTO otel (otel_isim,sehir,ilce,aciklama) VALUES (?,?,?,?)";
 			
 			statement=con.prepareStatement(insertQuery);
 			statement.setObject(1, hotel.getName());
+			statement.setObject(2, hotel.getSehir());
+			statement.setObject(3, hotel.getIlce());
+			statement.setObject(4, hotel.getAciklama());
 			statement.execute();
 			
 			
@@ -100,11 +115,14 @@ public class HotelDAO implements BaseDAO<Hotel> {
 	public boolean update(Hotel hotel) {
 		try {
 			
-			String updateQuery="UPDATE otel SET otel_isim=? WHERE id=? ";
+			String updateQuery="UPDATE otel SET otel_isim=?,sehir=?, ilce=?,aciklama=? WHERE id=? ";
 			
 			statement=con.prepareStatement(updateQuery);
 			statement.setObject(1, hotel.getName());
-			statement.setObject(2, hotel.getId());
+			statement.setObject(2, hotel.getSehir());
+			statement.setObject(3, hotel.getIlce());
+			statement.setObject(4, hotel.getAciklama());
+			statement.setObject(5, hotel.getId());
 			
 			
 			statement.execute();

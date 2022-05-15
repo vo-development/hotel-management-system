@@ -7,21 +7,26 @@ public class User {
     private String username;
 
     private String password;
+    
+    private String mail;
 
-    public User(int id, String username, String password) {
+    public User(int id, String username, String password,String mail) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.mail=mail;
 	}
-    public User(String username, String password) {
+    public User(String username, String password,String mail) {
     	super();
     	this.username=username;
     	this.password=password;
+    	this.mail=mail;
     }
     public User() {
     	
     }
+
 
 	public int getId() {
     	return id;
@@ -46,12 +51,19 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
     
 
     
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", mail=" + mail + "]";
 	}
 	@Override
     public boolean equals(Object obj) {

@@ -35,10 +35,12 @@ public class UserDAO implements BaseDAO<User> {
 			int userid= result.getInt("id");
 			String name = result.getString("isim");
 			String password = result.getString("sifre");
+			String mail =result.getString("email");
 			
 			user.setId(userid);
 			user.setUsername(name);
 			user.setPassword(password);
+			user.setMail(mail);
 			}
 			
 	
@@ -67,12 +69,15 @@ public class UserDAO implements BaseDAO<User> {
 			while (result.next()) {
 				user = new User();
 				int id = result.getInt("id");
-				String name = result.getNString("isim");
-				String password = result.getNString("sifre");
+				String name = result.getString("isim");
+				String password = result.getString("sifre");
+				String mail = result.getString("email");
 				
 				user.setId(id);
 				user.setUsername(name);
 				user.setPassword(password);
+				user.setMail(mail);
+				
 				
 				users.add(user);
 				
@@ -93,14 +98,15 @@ public class UserDAO implements BaseDAO<User> {
 		
 		
 		try {
-			String insertQuery="INSERT INTO kullanici (id,isim,sifre) values (?,?,?)";
+			String insertQuery="INSERT INTO kullanici (id,isim,sifre,mail) values (?,?,?,?)";
 					
 					
 			
 			statement=con.prepareStatement(insertQuery);
-			statement.setObject(1, ((pojo.User) user).getId());
-			statement.setObject(2, ((pojo.User) user).getUsername());
-			statement.setObject(3, ((pojo.User) user).getPassword() );
+			statement.setObject(1, user.getId());
+			statement.setObject(2, user.getUsername());
+			statement.setObject(3, user.getPassword());
+			statement.setObject(4, user.getMail());
 			
 			statement.execute();
 			
@@ -117,13 +123,14 @@ public class UserDAO implements BaseDAO<User> {
 	@Override
 	public boolean update(User user) {
 			try {
-			String updateQuery="UPDATE kullanici SET isim=?,sifre=? WHERE id=? ";
+			String updateQuery="UPDATE kullanici SET isim=?,sifre=?,email=? WHERE id=? ";
 			
 			statement=con.prepareStatement(updateQuery);
 			
-			statement.setObject(1, ((pojo.User) user).getUsername());
-			statement.setObject(2, ((pojo.User) user).getPassword() );
-			statement.setObject(3, ((pojo.User) user).getId());
+			statement.setObject(1, user.getUsername());
+			statement.setObject(2, user.getPassword() );
+			statement.setObject(3, user.getMail());
+			statement.setObject(4, user.getId());
 			statement.execute();
 			
 			return true;

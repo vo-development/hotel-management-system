@@ -30,11 +30,13 @@ public class RoomDAO implements BaseDAO<Room>{
 				 int number = result.getInt("numara");
 				 int hotelId = result.getInt("otel_id");
 				 int reservationId= result.getInt("rezervasyon_id");
+				 int bedQuantity = result.getInt("yatak_Sayisi");
 					
 				 room.setId(roomId);
 				 room.setNumber(number);
-				 room.setHotel(hotelId);
+				 room.setHotelId(hotelId);
 				 room.setReservationId(reservationId);
+				 room.setBedQuantity(bedQuantity);
 				 
 			 }
 			
@@ -65,11 +67,13 @@ public class RoomDAO implements BaseDAO<Room>{
 				int number = result.getInt("numara");
 				int hotelId = result.getInt("otel_id");
 				int reservationId= result.getInt("rezervasyon_id");
+				int bedQuantity= result.getInt("yatak_sayisi");
 				
 				room.setId(id);
 				room.setNumber(number);
-				room.setHotel(hotelId);
+				room.setHotelId(hotelId);
 				room.setReservationId(reservationId);
+				room.setBedQuantity(bedQuantity);
 				
 				rooms.add(room);
 				
@@ -90,13 +94,14 @@ public class RoomDAO implements BaseDAO<Room>{
 			
 		try {
 			
-			String insertQuery="INSERT INTO oda (numara,otel_id,rezervasyon_id) VALUES (?,?,?)";
+			String insertQuery="INSERT INTO oda (numara,otel_id,rezervasyon_id,yatak_sayisi) VALUES (?,?,?,?)";
 			
 			statement=con.prepareStatement(insertQuery);
 			
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
 			statement.setObject(3, room.getReservationId());
+			statement.setObject(4, room.getBedQuantity());
 			
 			
 			statement.execute();
@@ -115,13 +120,14 @@ public class RoomDAO implements BaseDAO<Room>{
 	public boolean update(Room room) {
 		try {
 			
-			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=? WHERE id=?";
+			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=? WHERE id=?";
 			
 			statement=con.prepareStatement(updateQuery);
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
 			statement.setObject(3, room.getReservationId());
-			statement.setObject(4, room.getId());
+			statement.setObject(4, room.getBedQuantity());
+			statement.setObject(5, room.getId());
 			
 			statement.execute();
 			
