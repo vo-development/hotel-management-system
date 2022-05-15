@@ -1,6 +1,7 @@
 package helper;
 
 import controller.BaseController;
+import controller.UserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -8,7 +9,7 @@ import javafx.scene.Parent;
 public class ViewLoader {
 
 
-    public static Parent load(String fxmlName, BaseController controller) {
+    public static Parent load(String fxmlName,BaseController controller) {
 
         var url = ViewLoader.class.getResource(String.format("/fxml/%s.fxml", fxmlName));
 

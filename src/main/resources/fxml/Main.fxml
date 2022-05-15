@@ -23,10 +23,21 @@
             </Pane>
          </content>
     </Tab>
-    <Tab text="Untitled Tab 2">
+    <Tab text="Odalar">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="373.0" prefWidth="600.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Id" />
+                      <TableColumn prefWidth="75.0" text="Numara" />
+                        <TableColumn prefWidth="75.0" text="Otel_id" />
+                        <TableColumn prefWidth="109.59991455078125" text="Rezervasyon_id" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
       </content>
     </Tab>
+      <Tab text="Rezervasyon" />
   </tabs>
 </TabPane>

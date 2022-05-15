@@ -1,56 +1,35 @@
 package controller;
 
-import dal.dao.UserDAO;
 import helper.ViewLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController extends BaseController {
 
+    @FXML
+    private Button btn_Custumer;
 
     @FXML
-    public TextField txt_userName;
+    void btnOnClick(ActionEvent event) {
+        var source = event.getSource();
+        var stage = (Stage) btn_Custumer.getScene().getWindow();
 
-    @FXML
-    public PasswordField txt_password;
-
-    @FXML
-    public Button btn_login;
-
-    @FXML
-    public Button btn_register;
-
-
-    @FXML
-    public void btnLoginClick(ActionEvent actionEvent) {
-
-        var source = actionEvent.getSource();
-        var stage = (Stage) txt_userName.getScene().getWindow();
-
-
-        if(source.equals(btn_register)){
-            var registerController = new CustomerRegisterController();
-            var registerWindow = ViewLoader.load("CustomerRegister",registerController);
-            stage.setScene(new Scene(registerWindow));
+        if (source.equals(btn_Custumer)) {
+            var controller = new CustomerLoginController();
+            var loginWindow = ViewLoader.load("CustomerLogin", controller);
+            stage.setScene(new Scene((Parent) loginWindow));
         }
 
-        else{
+        else {
 
-
-
-            var mainWindow = ViewLoader.load("Main", new MainController());
-            stage.setScene(new Scene(mainWindow));
+            var loginWindow = ViewLoader.load("UserLogin", new UserController());
+            stage.setScene(new Scene(loginWindow));
         }
-
-
 
     }
-
 
 }

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.util.regex.Matcher;
@@ -19,9 +20,9 @@ import pojo.Customer;
 
 public class CustomerRegisterController extends BaseController {
 
-//buda degisiklik yaptim ama ise yaramadi zaten hepsi true donuyor NOT: BİR DOST
+//buda degisiklik yaptim ama ise yaramadi zaten hepsi true donuyor NOT: BİR DOST NOT2:sorun cozuldu dostlar sagolsun...
     @FXML
-    private TextField pwd_pass; // PasswordField olmasi lazim
+    private PasswordField pwd_pass; 
 
     @FXML
     private TextField txt_address;
@@ -40,10 +41,10 @@ public class CustomerRegisterController extends BaseController {
 
     private  String name;
     private  String password;
-    private  String mail;
-    private  String phone;
+    private  String mail;//bitti
+    private  String phone;//bitti
     private  String address;
-    private  String tcNo;
+    private  String tcNo;//bitti(son rakam haric)
 
 
     private boolean isBlank(){
@@ -67,14 +68,7 @@ public class CustomerRegisterController extends BaseController {
 
     private boolean validInputs(){
 
-        Pattern kontrol=Pattern.compile("5[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
-        Matcher phoneVeri=kontrol.matcher(phone);
-
-        if(!phoneVeri.matches()){
-            showAlert("Geçersiz numara!");
-            return false;
-        }
-
+     
         if(isBlank()){
             showAlert("Tüm alanlar dolu olmalıdır!");
             return false;
@@ -88,6 +82,23 @@ public class CustomerRegisterController extends BaseController {
             showAlert("Geçersiz Email !");
             return false;
         }
+
+        Pattern kontrolPhone=Pattern.compile("5[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
+        Matcher phoneVeri=kontrolPhone.matcher(phone);
+
+        if(!phoneVeri.matches()){
+            showAlert("Geçersiz numara!");
+            return false;
+        }
+
+//son rakam sadece sifir olabiliyor sonra kontrol et
+        Pattern KontrolTc=Pattern.compile("[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]0");
+        Matcher TcVeri=KontrolTc.matcher(tcNo);
+        if(!TcVeri.matches()){
+            showAlert("Geçersiz tc!");
+            return false;
+        }
+
 
 
         return true;
@@ -120,7 +131,7 @@ public class CustomerRegisterController extends BaseController {
                 showAlert("Kayıt Eklendi!");
 
                 var stage = (Stage) txt_name.getScene().getWindow();
-                var loginWindow = ViewLoader.load("Login",new LoginController());
+                var loginWindow = ViewLoader.load("Login",new CustomerLoginController());
                 stage.setScene(new Scene(loginWindow));
             }
 
