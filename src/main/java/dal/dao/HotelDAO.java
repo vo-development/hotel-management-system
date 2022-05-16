@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import pojo.Hotel;
@@ -12,6 +13,7 @@ public class HotelDAO implements BaseDAO<Hotel> {
 	private PreparedStatement statement = null;
 	
 	private ResultSet result = null;
+	
 	
 
 	@Override
@@ -88,36 +90,46 @@ public class HotelDAO implements BaseDAO<Hotel> {
 	}
 
 	@Override
-	public  boolean insert(Hotel hotel) {
+	public  int insert(Hotel hotel) {
 			
+			int generatedKey=0;
+		
 		try {
 			
 			String insertQuery="INSERT INTO otel (otel_isim,sehir,ilce,aciklama) VALUES (?,?,?,?)";
 			
-			statement=con.prepareStatement(insertQuery);
+			statement=con.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, hotel.getName());
 			statement.setObject(2, hotel.getSehir());
 			statement.setObject(3, hotel.getIlce());
 			statement.setObject(4, hotel.getAciklama());
+			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-			return false;
 		}
+			return generatedKey;
 	}
 
 	@Override
-	public boolean update(Hotel hotel) {
+	public int update(Hotel hotel) {
+		
+			int generatedKey = 0;
+		
 		try {
 			
 			String updateQuery="UPDATE otel SET otel_isim=?,sehir=?, ilce=?,aciklama=? WHERE id=? ";
 			
-			statement=con.prepareStatement(updateQuery);
+			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, hotel.getName());
 			statement.setObject(2, hotel.getSehir());
 			statement.setObject(3, hotel.getIlce());
@@ -127,12 +139,16 @@ public class HotelDAO implements BaseDAO<Hotel> {
 			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+
 				} catch (SQLException e) {
 					e.printStackTrace();
-				return false;
 		}
+			return generatedKey;
 	}
 
 	@Override

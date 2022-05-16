@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import pojo.Room;
@@ -136,13 +137,15 @@ public class RoomDAO implements BaseDAO<Room>{
 	}
 
 	@Override
-	public boolean insert(Room room) {
+	public int insert(Room room) {
 			
+		int generatedKey=0;
+		
 		try {
 			
 			String insertQuery="INSERT INTO oda (numara,otel_id,rezervasyon_id,yatak_sayisi,fiyat) VALUES (?,?,?,?,?)";
 			
-			statement=con.prepareStatement(insertQuery);
+			statement=con.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
@@ -153,18 +156,26 @@ public class RoomDAO implements BaseDAO<Room>{
 			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-			return false;
+			
 		}
+			return generatedKey;
 	}
 
 	@Override
-	public boolean update(Room room) {
+	public int update(Room room) {
+		
+		int generatedKey=0;
+		
 		try {
 			
 			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=?,fiyat=? WHERE id=?";
@@ -178,13 +189,18 @@ public class RoomDAO implements BaseDAO<Room>{
 			statement.setObject(6, room.getId());
 			
 			statement.execute();
+				
+			result =statement.getGeneratedKeys();
 			
 			
-			return true;
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 				} catch (SQLException e) {
 					e.printStackTrace();
-				return false;
+				
 		}
+			return generatedKey;
 	}
 
 	@Override

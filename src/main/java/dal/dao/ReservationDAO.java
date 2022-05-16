@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -100,47 +101,61 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 	}
 
 	@Override
-	public boolean insert(Reservation reservation) {
+	public int insert(Reservation reservation) {
 			
+			int generatedKey=0;
+		
 		try {
 			
 			String insertQuery="INSERT INTO rezervasyon (baslangic_tarihi,bitis_tarihi,musteri_id) values (?,?,?)";
-			statement=con.prepareStatement(insertQuery);
+			statement=con.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, reservation.getStartDate());
 			statement.setObject(2, reservation.getEndDate());
 			statement.setObject(3, reservation.getCustomerId());
 			
 			statement.execute();
 			
-			return true;
+			result =statement.getGeneratedKeys();
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-			return false;
 		}
+			return generatedKey;
 	}
 
 	@Override
-	public boolean update(Reservation reservation) {
+	public int update(Reservation reservation) {
+		
+			int generatedKey=0;
+		
 		try {
 			
 			String updateQuery="UPDATE rezervasyon SET baslangic_tarihi=?,bitis_tarihi=?,musteri_id=? WHERE id=?";
 			
-			statement=con.prepareStatement(updateQuery);
+			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 
 			statement.setObject(1, reservation.getStartDate());
 			statement.setObject(2, reservation.getEndDate());
 			statement.setObject(3, reservation.getCustomerId());
 			statement.setObject(4, reservation.getId());
+			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 				} catch (SQLException e) {
-					e.printStackTrace();
-				return false;
-		}
+					e.printStackTrace();		
+				}
+				return generatedKey;
 	}
 
 	@Override
