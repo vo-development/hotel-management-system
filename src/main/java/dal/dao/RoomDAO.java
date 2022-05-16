@@ -27,12 +27,14 @@ public class RoomDAO implements BaseDAO<Room>{
 			 if (result.next()) {
 				 room = new Room();
 				 int roomId= result.getInt("id");
+				 int price= result.getInt("price");
 				 int number = result.getInt("numara");
 				 int hotelId = result.getInt("otel_id");
 				 int reservationId= result.getInt("rezervasyon_id");
 				 int bedQuantity = result.getInt("yatak_Sayisi");
 					
 				 room.setId(roomId);
+				 room.setPrice(price);
 				 room.setNumber(number);
 				 room.setHotelId(hotelId);
 				 room.setReservationId(reservationId);
@@ -64,12 +66,14 @@ public class RoomDAO implements BaseDAO<Room>{
 				room = new Room();
 				
 				int id= result.getInt("id");
+				int price= result.getInt("price");
 				int number = result.getInt("numara");
 				int hotelId = result.getInt("otel_id");
 				int reservationId= result.getInt("rezervasyon_id");
 				int bedQuantity= result.getInt("yatak_sayisi");
 				
 				room.setId(id);
+				room.setId(price);
 				room.setNumber(number);
 				room.setHotelId(hotelId);
 				room.setReservationId(reservationId);
@@ -105,11 +109,13 @@ public class RoomDAO implements BaseDAO<Room>{
 				room = new Room();
 
 				int id= result.getInt("id");
+				int price= result.getInt("fiyat");
 				int number = result.getInt("numara");
 				int reservationId= result.getInt("rezervasyon_id");
 				int bedQuantity= result.getInt("yatak_sayisi");
 
 				room.setId(id);
+				room.setPrice(price);
 				room.setNumber(number);
 				room.setHotelId(hotelId);
 				room.setReservationId(reservationId);
@@ -134,7 +140,7 @@ public class RoomDAO implements BaseDAO<Room>{
 			
 		try {
 			
-			String insertQuery="INSERT INTO oda (numara,otel_id,rezervasyon_id,yatak_sayisi) VALUES (?,?,?,?)";
+			String insertQuery="INSERT INTO oda (numara,otel_id,rezervasyon_id,yatak_sayisi,fiyat) VALUES (?,?,?,?,?)";
 			
 			statement=con.prepareStatement(insertQuery);
 			
@@ -142,7 +148,8 @@ public class RoomDAO implements BaseDAO<Room>{
 			statement.setObject(2, room.getHotelId());
 			statement.setObject(3, room.getReservationId());
 			statement.setObject(4, room.getBedQuantity());
-			
+			statement.setObject(5, room.getPrice());
+
 			
 			statement.execute();
 			
@@ -160,14 +167,15 @@ public class RoomDAO implements BaseDAO<Room>{
 	public boolean update(Room room) {
 		try {
 			
-			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=? WHERE id=?";
+			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=?,fiyat=? WHERE id=?";
 			
 			statement=con.prepareStatement(updateQuery);
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
 			statement.setObject(3, room.getReservationId());
 			statement.setObject(4, room.getBedQuantity());
-			statement.setObject(5, room.getId());
+			statement.setObject(5, room.getPrice());
+			statement.setObject(6, room.getId());
 			
 			statement.execute();
 			

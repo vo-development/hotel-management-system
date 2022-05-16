@@ -32,14 +32,12 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 			reservation = new Reservation();
 			
 			int reservationId = result.getInt("id");
-			int price = result.getInt("fiyat");
 			Date startDate= result.getDate("baslangic_tarihi");
 			Date endDate= result.getDate("bitis_tarihi");
 			int customerId= result.getInt("musteri_id");
 			
 			
 			reservation.setId(reservationId);
-			reservation.setPrice(price);
 			reservation.setStartDate(startDate);
 			reservation.setEndDate(endDate);
 			reservation.setCustomerId(customerId);
@@ -73,14 +71,12 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 				reservation = new Reservation();
 				
 				int id = result.getInt("id");
-				int price = result.getInt("fiyat");
 				Date startDate= result.getDate("baslangic_tarihi");
 				Date endDate= result.getDate("bitis_tarihi");
 				int customerId= result.getInt("musteri_id");
 				
 				
 				reservation.setId(id);
-				reservation.setPrice(price);
 				reservation.setStartDate(startDate);
 				reservation.setEndDate(endDate);
 				reservation.setCustomerId(customerId);
@@ -108,12 +104,11 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 			
 		try {
 			
-			String insertQuery="INSERT INTO rezervasyon (fiyat,baslangic_tarihi,bitis_tarihi,musteri_id) values (?,?,?,?)";
+			String insertQuery="INSERT INTO rezervasyon (baslangic_tarihi,bitis_tarihi,musteri_id) values (?,?,?)";
 			statement=con.prepareStatement(insertQuery);
-			statement.setObject(1, reservation.getPrice());
-			statement.setObject(2, reservation.getStartDate());
-			statement.setObject(3, reservation.getEndDate());
-			statement.setObject(4, reservation.getCustomerId());
+			statement.setObject(1, reservation.getStartDate());
+			statement.setObject(2, reservation.getEndDate());
+			statement.setObject(3, reservation.getCustomerId());
 			
 			statement.execute();
 			
@@ -130,15 +125,14 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 	public boolean update(Reservation reservation) {
 		try {
 			
-			String updateQuery="UPDATE rezervasyon SET fiyat=?,baslangic_tarihi=?,bitis_tarihi=?,musteri_id=? WHERE id=?";
+			String updateQuery="UPDATE rezervasyon SET baslangic_tarihi=?,bitis_tarihi=?,musteri_id=? WHERE id=?";
 			
 			statement=con.prepareStatement(updateQuery);
 
-			statement.setObject(1, reservation.getPrice());
-			statement.setObject(2, reservation.getStartDate());
-			statement.setObject(3, reservation.getEndDate());
-			statement.setObject(4, reservation.getCustomerId());
-			statement.setObject(5, reservation.getId());
+			statement.setObject(1, reservation.getStartDate());
+			statement.setObject(2, reservation.getEndDate());
+			statement.setObject(3, reservation.getCustomerId());
+			statement.setObject(4, reservation.getId());
 			statement.execute();
 			
 			
