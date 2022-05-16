@@ -21,7 +21,7 @@ public class LoginController extends BaseController {
         if (source.equals(btn_Custumer)) {
             var controller = new CustomerLoginController();
             var loginWindow = ViewLoader.load("CustomerLogin", controller);
-            stage.setScene(new Scene((Parent) loginWindow));
+            stage.setScene(new Scene( loginWindow));
         }
 
         else {

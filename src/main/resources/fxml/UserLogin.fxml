@@ -9,8 +9,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="239.0" layoutY="125.0" />
-      <PasswordField layoutX="239.0" layoutY="174.0" />
+      <TextField fx:id="txt_id" layoutX="239.0" layoutY="125.0" />
+      <PasswordField fx:id="txt_pass" layoutX="239.0" layoutY="174.0" />
       <Label layoutX="201.0" layoutY="125.0" prefHeight="26.0" prefWidth="20.0" text="Id">
          <font>
             <Font size="16.0" />
@@ -21,10 +21,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="290.0" layoutY="216.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #777777;" text="Giriş">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
+      <Button layoutX="341.0" layoutY="222.0" mnemonicParsing="false" onAction="#btnOnClick" text="Giriş" />
+
    </children>
 </AnchorPane>

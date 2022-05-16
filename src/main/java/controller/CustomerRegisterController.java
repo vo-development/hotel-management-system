@@ -124,7 +124,7 @@ public class CustomerRegisterController extends BaseController {
 
             var result = customerDAO.insert(customer);
 
-            if(result){
+            if(result != 0){
 
                 showAlert("Kayıt Eklendi!");
 

@@ -88,7 +88,7 @@ private boolean validInputs(){
 
             var result = customerDAO.insert(user);
 
-            if(result){
+            if(result != 0){
 
                 showAlert("Kayıt Eklendi!");
 

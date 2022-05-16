@@ -57,15 +57,12 @@ public class CustomerRoomController extends BaseController {
         HOTEL_ID = hotel_id;
     }
 
-<<<<<<< HEAD
-=======
     private RoomDAO roomDAO = new RoomDAO();
 
     private ReservationDAO reservationDAO = new ReservationDAO();
 
     private Room selectedRoom = null;
 
->>>>>>> 283c09013ebc47887b46c2a7e8e9d44e927449cc
     @FXML
     void initialize(){
 
@@ -107,7 +104,7 @@ public class CustomerRoomController extends BaseController {
     @FXML
     void btnOnClick(ActionEvent event) {
 
-        int sahteKullaniciId = 3;
+        int sahteKullaniciId = 5;
 
         var beginLocalDate = dp_begin.getValue();
         var endLocalDate = dp_end.getValue();
@@ -118,11 +115,15 @@ public class CustomerRoomController extends BaseController {
             var beginDate = Date.from(beginLocalDate.atStartOfDay(defaultZoneId).toInstant());
             var endDate = Date.from(endLocalDate.atStartOfDay(defaultZoneId).toInstant());
 
-            Reservation reservation = new Reservation(beginDate,endDate,sahteKullaniciId);
+            var reservation = new Reservation(beginDate,endDate,sahteKullaniciId);
 
-            reservationDAO.insert(reservation);
+            var rezervationId = reservationDAO.insert(reservation);
 
-//            selectedRoom.setReservationId(r);
+            System.out.println(rezervationId);
+
+            selectedRoom.setReservationId(rezervationId);
+            roomDAO.update(selectedRoom);
+
 
             fillTable();
 
