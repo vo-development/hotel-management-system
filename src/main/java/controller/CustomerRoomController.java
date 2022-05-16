@@ -36,7 +36,6 @@ public class CustomerRoomController extends BaseController {
         HOTEL_ID = hotel_id;
     }
 
-
     @FXML
     void initialize(){
 
@@ -50,7 +49,6 @@ public class CustomerRoomController extends BaseController {
         roomObservableList.addAll(rooms);
 
         tbl_rooms.setItems(roomObservableList);
-
 
     }
 

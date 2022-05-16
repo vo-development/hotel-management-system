@@ -13,9 +13,9 @@
       <TextField fx:id="txt_mail" layoutX="246.0" layoutY="204.0" promptText="Mail" />
       <TextField fx:id="txt_phone" layoutX="246.0" layoutY="248.0" promptText="Telefon" />
       <TextField fx:id="txt_address" layoutX="246.0" layoutY="294.0" promptText="Adres" />
-      <Button layoutX="287.0" layoutY="334.0" mnemonicParsing="false" onAction="#registerOnClick" prefHeight="33.0" prefWidth="68.0" style="-fx-background-color: #777777;" text="Kaydet">
+      <Button layoutX="287.0" layoutY="337.0" mnemonicParsing="false" onAction="#registerOnClick" prefHeight="34.0" prefWidth="81.0" style="-fx-background-color: #777777;" text="Kaydet">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="16.0" />
          </font></Button>
       <TextField fx:id="txt_tc" layoutX="246.0" layoutY="73.0" promptText="TC Numarası:" />
       <Label layoutX="139.0" layoutY="73.0" prefHeight="27.0" prefWidth="98.0" text="Tc numarası:">

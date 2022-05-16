@@ -3,7 +3,6 @@ package controller;
 import helper.ViewLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -24,8 +23,6 @@ public class CustomerLoginController extends BaseController {
 
     @FXML
     public Button btn_register;
-
-
 
     @FXML
     public void btnLoginClick(ActionEvent actionEvent) {

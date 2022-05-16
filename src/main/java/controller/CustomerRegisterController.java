@@ -99,8 +99,6 @@ public class CustomerRegisterController extends BaseController {
             return false;
         }
 
-
-
         return true;
     }
 
