@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import pojo.Roles;
@@ -78,44 +79,59 @@ public class RolesDAO implements BaseDAO<Roles>{
 	}
 
 	@Override
-	public boolean insert(Roles roles) {
+	public int insert(Roles roles) {
 			
+			int generatedKey=0;
+		
 		try {
 			
 			String insertQuery="INSERT INTO roller (rol_isim) VALUES (?)";
 			
-			statement=con.prepareStatement(insertQuery);
+			statement=con.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setObject(1,roles.getRoleName());
+			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-			return false;
+		
 		}
+			return generatedKey;
 	}
 
 	@Override
-	public boolean update(Roles roles) {
+	public int update(Roles roles) {
+		
+		int generatedKey=0;
+		
 		try {
 			
 			String updateQuery="UPDATE  roller SET rol_ismi=? WHERE id=? ";
 			
-			statement=con.prepareStatement(updateQuery);
+			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, roles.getRoleName());
 			statement.setObject(2, roles.getId());
+			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 				} catch (SQLException e) {
 					e.printStackTrace();
-				return false;
 		}
+			return generatedKey;
 	}
 
 	@Override

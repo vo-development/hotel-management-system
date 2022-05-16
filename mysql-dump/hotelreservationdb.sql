@@ -132,6 +132,7 @@ DROP TABLE IF EXISTS `oda`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `oda` (
                        `id` int NOT NULL AUTO_INCREMENT,
+                       `fiyat` int NOT NULL,
                        `numara` int NOT NULL,
                        `otel_id` int NOT NULL,
                        `rezervasyon_id` int DEFAULT NULL,
@@ -152,7 +153,7 @@ CREATE TABLE `oda` (
 
 LOCK TABLES `oda` WRITE;
 /*!40000 ALTER TABLE `oda` DISABLE KEYS */;
-INSERT INTO `oda` VALUES (1,2,1,NULL,0),(2,3,1,NULL,0),(22,305,1,3,0),(24,308,1,5,0);
+INSERT INTO `oda` VALUES (1,100,2,1,NULL,0),(2,100,3,1,NULL,0),(22,200,305,1,3,0),(24,300,308,1,5,0);
 /*!40000 ALTER TABLE `oda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +193,6 @@ DROP TABLE IF EXISTS `rezervasyon`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rezervasyon` (
                                `id` int NOT NULL AUTO_INCREMENT,
-                               `fiyat` int DEFAULT NULL,
                                `baslangic_tarihi` date NOT NULL,
                                `bitis_tarihi` date NOT NULL,
                                `musteri_id` int DEFAULT NULL,
@@ -208,7 +208,7 @@ CREATE TABLE `rezervasyon` (
 
 LOCK TABLES `rezervasyon` WRITE;
 /*!40000 ALTER TABLE `rezervasyon` DISABLE KEYS */;
-INSERT INTO `rezervasyon` VALUES (1,100,'2022-05-02','2022-05-10',NULL),(3,100,'2022-06-02','2022-06-10',NULL),(5,250,'2022-07-30','2022-08-30',2),(8,100,'2022-08-15','2022-08-30',NULL),(9,0,'2021-01-01','2021-01-02',NULL),(10,0,'2021-01-01','2021-01-02',NULL);
+INSERT INTO `rezervasyon` VALUES (1,'2022-05-02','2022-05-10',NULL),(3,'2022-06-02','2022-06-10',NULL),(5,'2022-07-30','2022-08-30',2),(8,'2022-08-15','2022-08-30',NULL),(9,'2021-01-01','2021-01-02',NULL),(10,'2021-01-01','2021-01-02',NULL);
 /*!40000 ALTER TABLE `rezervasyon` ENABLE KEYS */;
 UNLOCK TABLES;
 

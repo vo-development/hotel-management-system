@@ -5,26 +5,22 @@ import java.util.*;
 public class Reservation {
 	
 	private int id;
-	
-	private int price;
-	
+
 	private Date startDate;
 	
 	private Date endDate;
 	
 	private int customerId;
 
-	public Reservation(int price, Date startDate, Date endDate, int customerId) {
+	public Reservation(Date startDate, Date endDate, int customerId) {
 		super();
-		this.price = price;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.customerId= customerId;
 	}
-	public Reservation(int id,int price, Date startDate, Date endDate, int customerId) {
+	public Reservation(int id, Date startDate, Date endDate, int customerId) {
 		super();
 		this.id=id;
-		this.price = price;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.customerId= customerId;
@@ -41,13 +37,7 @@ public class Reservation {
 		this.id = id;
 	}
 
-	public int getPrice() {
-		return price;
-	}
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 	public Date getStartDate() {
 		return startDate;
@@ -75,7 +65,7 @@ public class Reservation {
 	
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", price=" + price + ", startDate=" + startDate + ", endDate=" + endDate
+		return "Reservation [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", customerId=" + customerId + "]";
 	}
 	

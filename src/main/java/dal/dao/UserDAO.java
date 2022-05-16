@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import pojo.User;
@@ -94,34 +95,45 @@ public class UserDAO implements BaseDAO<User> {
 
 
 	@Override
-	public boolean insert(User user) {
-		
+	public int insert(User user) {
+			
+		int generatedKey=0;
 		
 		try {
-			String insertQuery="INSERT INTO kullanici (isim,sifre,mail) values (?,?,?)";
+			String insertQuery="INSERT INTO kullanici (isim,sifre,email) values (?,?,?)";
 					
 					
 			
-			statement=con.prepareStatement(insertQuery);
+			statement=con.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, user.getUsername());
 			statement.setObject(2, user.getPassword());
 			statement.setObject(3, user.getMail());
 			
 			statement.execute();
 			
-			return true;
+			result =statement.getGeneratedKeys();
+			
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
+	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+		
 		}
+		return generatedKey;
 		
 	}
 
 
 	@Override
-	public boolean update(User user) {
-			try {
+	public int update(User user) {
+			
+		int generatedKey=0;
+		
+		try {
 			String updateQuery="UPDATE kullanici SET isim=?,sifre=?,email=? WHERE id=? ";
 			
 			statement=con.prepareStatement(updateQuery);
@@ -130,13 +142,22 @@ public class UserDAO implements BaseDAO<User> {
 			statement.setObject(2, user.getPassword() );
 			statement.setObject(3, user.getMail());
 			statement.setObject(4, user.getId());
+			
 			statement.execute();
 			
-			return true;
+			result =statement.getGeneratedKeys();
+			
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			
 		}
+		return generatedKey;
+			
 	}
 
 

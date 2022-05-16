@@ -3,6 +3,7 @@ package dal.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 
 import pojo.Customer;
@@ -105,13 +106,13 @@ public class CustomerDAO implements BaseDAO<Customer>{
 	}
 
 	@Override
-	public boolean insert(Customer customer) {
-			
+	public int insert(Customer customer) {
+		int generatedKey=0;
 		try {
 			
 			String insertQuery = "INSERT INTO musteri (isim,sifre,mail,telefon_no,kimlik_no,adres) values (?,?,?,?,?,?)";
 			
-			statement = con.prepareStatement(insertQuery);
+			statement = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, customer.getName());
 			statement.setObject(2, customer.getPassword());
 			statement.setObject(3, customer.getMail());
@@ -121,23 +122,32 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			
 			statement.execute();
 			
+			result =statement.getGeneratedKeys();
 			
-			return true;
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+				
+			
+			
+			
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-			return false;
+			
 		}
+		
+		return generatedKey;
 	}
 
 	@Override
-	public boolean update(Customer customer) {
-		
+	public int update(Customer customer) {
+		int generatedKey=0;
 		try {
 			
 			String updateQuery="UPDATE  musteri  SET isim = ? , sifre= ?, mail = ?, telefon_no= ?,kimlik_no= ?, adres= ? WHERE id=?";
-			statement = con.prepareStatement(updateQuery);
+			statement = con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setObject(1, customer.getName());
 			statement.setObject(2, customer.getPassword());
@@ -150,11 +160,17 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			
 			statement.execute();
 			
-			return true;
+			result =statement.getGeneratedKeys();
+			
+			
+			if(result.next()) 
+				generatedKey=result.getInt("id");
+			
 				} catch (SQLException e) {
 					e.printStackTrace();
-				return false;
+
 		}
+		return generatedKey;
 	}
 
 	@Override

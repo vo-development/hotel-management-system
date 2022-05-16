@@ -52,6 +52,7 @@ public class CustomerMainController extends BaseController{
 
         tbl_hotels.setItems(hotelObservableList);
 
+        // Tabloya tiklandigi zaman calisan method
         tbl_hotels.setOnMouseClicked((MouseEvent event) -> {
             if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
 
