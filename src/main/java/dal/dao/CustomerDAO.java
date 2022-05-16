@@ -126,7 +126,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 				
 			
 			
@@ -164,7 +164,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 				} catch (SQLException e) {
 					e.printStackTrace();

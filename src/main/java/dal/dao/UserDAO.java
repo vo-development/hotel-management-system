@@ -115,7 +115,7 @@ public class UserDAO implements BaseDAO<User> {
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 	
 			
@@ -149,7 +149,7 @@ public class UserDAO implements BaseDAO<User> {
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 			
 		} catch (SQLException e) {

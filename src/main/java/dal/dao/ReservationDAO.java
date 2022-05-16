@@ -118,7 +118,7 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 			result =statement.getGeneratedKeys();
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 
 		
 		} catch (SQLException e) {
@@ -150,7 +150,7 @@ public class ReservationDAO implements BaseDAO<Reservation> {
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 				} catch (SQLException e) {
 					e.printStackTrace();		

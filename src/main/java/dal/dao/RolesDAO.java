@@ -96,7 +96,7 @@ public class RolesDAO implements BaseDAO<Roles>{
 			result =statement.getGeneratedKeys();
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 		
 		} catch (SQLException e) {
@@ -126,7 +126,7 @@ public class RolesDAO implements BaseDAO<Roles>{
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 				} catch (SQLException e) {
 					e.printStackTrace();

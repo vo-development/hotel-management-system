@@ -160,7 +160,7 @@ public class RoomDAO implements BaseDAO<Room>{
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 
 		
 		} catch (SQLException e) {
@@ -194,7 +194,7 @@ public class RoomDAO implements BaseDAO<Room>{
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 				} catch (SQLException e) {
 					e.printStackTrace();

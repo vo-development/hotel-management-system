@@ -110,7 +110,7 @@ public class HotelDAO implements BaseDAO<Hotel> {
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 			
 		
 		} catch (SQLException e) {
@@ -143,7 +143,7 @@ public class HotelDAO implements BaseDAO<Hotel> {
 			
 			
 			if(result.next()) 
-				generatedKey=result.getInt("id");
+				generatedKey=result.getInt(1);
 
 				} catch (SQLException e) {
 					e.printStackTrace();
