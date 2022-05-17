@@ -16,12 +16,12 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="-1.0" layoutY="-1.0" prefHeight="571.0" prefWidth="578.0">
+                  <TableView fx:id="tbl_hotel" layoutX="-1.0" layoutY="-1.0" prefHeight="571.0" prefWidth="578.0">
                     <columns>
-                      <TableColumn prefWidth="91.99996644258499" text="Adı" />
-                      <TableColumn prefWidth="80.79998779296875" text="Şehir" />
-                        <TableColumn prefWidth="71.99996948242188" text="İlçe" />
-                        <TableColumn prefWidth="283.99997863769534" text="Adres" />
+                      <TableColumn fx:id="col_hotel_name" prefWidth="91.99996644258499" text="Adı" />
+                      <TableColumn fx:id="col_hotel_city" prefWidth="80.79998779296875" text="Şehir" />
+                        <TableColumn fx:id="col_hotel_town" prefWidth="71.99996948242188" text="İlçe" />
+                        <TableColumn fx:id="col_hotel_address" prefWidth="283.99997863769534" text="Adres" />
                     </columns>
                   </TableView>
                   <Button fx:id="btn_yeniHotel" layoutX="680.0" layoutY="101.0" mnemonicParsing="false" onAction="#YeniOtelEkle" prefHeight="42.0" prefWidth="116.0" style="-fx-background-color: #777777;" text="Yeni Otel Ekle">
@@ -29,7 +29,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="686.0" layoutY="263.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #777777;" text="Otel Sil">
+                  <Button layoutX="686.0" layoutY="263.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="104.0" onAction="#otelSil" style="-fx-background-color: #777777;" text="Otel Sil">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

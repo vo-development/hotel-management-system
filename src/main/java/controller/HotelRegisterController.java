@@ -84,8 +84,7 @@ private boolean validInputs(){
                 showAlert("Kayıt Eklendi!");
 
                 var stage = (Stage) txt_HotelName.getScene().getWindow();
-                var loginWindow = ViewLoader.load("Login",new UserLoginController());
-                stage.setScene(new Scene(loginWindow));
+                stage.close();
             }
 
             else {

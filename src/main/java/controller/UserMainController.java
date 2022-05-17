@@ -1,14 +1,18 @@
 package controller;
 
+import dal.dao.HotelDAO;
 import helper.ViewLoader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import pojo.Hotel;
 
 public class UserMainController extends BaseController{
     @FXML
@@ -24,6 +28,29 @@ public class UserMainController extends BaseController{
 
     @FXML
     private TabPane tabPanel;
+
+    @FXML
+    private TableColumn<Hotel, String> col_hotel_address;
+
+    @FXML
+    private TableColumn<Hotel, String> col_hotel_city;
+
+    @FXML
+    private TableColumn<Hotel, String> col_hotel_name;
+
+    @FXML
+    private TableColumn<Hotel, String> col_hotel_town;
+
+
+    @FXML
+    private TableView<Hotel> tbl_hotel;
+
+
+    private ObservableList<Hotel> hotelObservableList = FXCollections.observableArrayList();
+    private HotelDAO hotelDAO = new HotelDAO();
+
+    private Hotel selectedHotel;
+
 
     @FXML
     void MusteriKayit(ActionEvent event) {
@@ -57,6 +84,16 @@ public class UserMainController extends BaseController{
 
 
     }
+
+    @FXML
+    void otelSil(ActionEvent event){
+
+        if(selectedHotel != null){
+            hotelDAO.delete(selectedHotel.getId());
+            refreshTable();
+        }
+    }
+
     @FXML
     void YeniOtelEkle(ActionEvent event) {
 
@@ -70,6 +107,7 @@ public class UserMainController extends BaseController{
             Stage registerWindow = new Stage();
             registerWindow.setScene(new Scene(registerParent));
             registerWindow.showAndWait();
+            refreshTable();
         }
 
         else {
@@ -82,11 +120,36 @@ public class UserMainController extends BaseController{
 
     }
 
+    private void refreshTable(){
+
+        hotelObservableList.clear();
+
+        var hotels = hotelDAO.findAll();
+
+        hotelObservableList.addAll(hotels);
+
+        tbl_hotel.setItems(hotelObservableList);
+    }
+
     @FXML
     private void initialize(){
+        col_hotel_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        col_hotel_city.setCellValueFactory(new PropertyValueFactory<>("sehir"));
+        col_hotel_town.setCellValueFactory(new PropertyValueFactory<>("ilce"));
+        col_hotel_address.setCellValueFactory(new PropertyValueFactory<>("aciklama"));
+        refreshTable();
 
-        // var node = ViewLoader.load("HotelRegister",new HotelRegisterController());
-        // tabHotelRegister.setContent(node);
+        tbl_hotel.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1){
+
+                var item = tbl_hotel.getSelectionModel().getSelectedItem();
+
+                if(item != null){
+                   selectedHotel = item;
+                }
+            }
+        });
+
     }
 
 }
