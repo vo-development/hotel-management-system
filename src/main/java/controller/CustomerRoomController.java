@@ -104,7 +104,7 @@ public class CustomerRoomController extends BaseController {
     @FXML
     void btnOnClick(ActionEvent event) {
 
-        int sahteKullaniciId = 5;
+        int sahteKullaniciId = 4;
 
         var beginLocalDate = dp_begin.getValue();
         var endLocalDate = dp_end.getValue();
@@ -119,7 +119,6 @@ public class CustomerRoomController extends BaseController {
 
             var rezervationId = reservationDAO.insert(reservation);
 
-            System.out.println(rezervationId);
 
             selectedRoom.setReservationId(rezervationId);
             roomDAO.update(selectedRoom);

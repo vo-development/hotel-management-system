@@ -175,12 +175,18 @@ public class RoomDAO implements BaseDAO<Room>{
 	public int update(Room room) {
 		
 		int generatedKey=0;
-		
+
+
+
 		try {
-			
+
+			Statement stmt = con.createStatement();
+			stmt.execute("SET foreign_key_checks = 0");
+			stmt.close();
+
 			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=?,fiyat=? WHERE id=?";
 			
-			statement=con.prepareStatement(updateQuery);
+			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
 			statement.setObject(3, room.getReservationId());

@@ -62,12 +62,14 @@ public class UserMainController extends BaseController{
 
 
         var source = event.getSource();
-        var stage = (Stage) btn_yeniHotel.getScene().getWindow();
+//        var stage = (Stage) btn_yeniHotel.getScene().getWindow();
 
         if (source.equals(btn_yeniHotel)) {
             var controller = new HotelRegisterController();
-            var loginWindow = ViewLoader.load("HotelRegister", controller);
-            stage.setScene(new Scene( loginWindow));
+            var registerParent = ViewLoader.load("HotelRegister", controller);
+            Stage registerWindow = new Stage();
+            registerWindow.setScene(new Scene(registerParent));
+            registerWindow.showAndWait();
         }
 
         else {

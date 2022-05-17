@@ -71,13 +71,13 @@ private boolean validInputs(){
 
         if(isValid){
 
-            HotelDAO customerDAO = new HotelDAO();
+            HotelDAO hotelDAO = new HotelDAO();
 
             Hotel hotel = new Hotel(hotelName,hotelAdres,hotelIlce,hotelSehir);
 
             System.out.println("Hotel: "+hotel);
 
-            var result = customerDAO.insert(hotel);
+            var result = hotelDAO.insert(hotel);
 
             if(result != 0){
 

@@ -229,6 +229,10 @@ CREATE TABLE `roller` (
 --
 -- Dumping data for table `roller`
 --
+-- insert islemleri icin
+SET foreign_key_checks = 0;
+
+
 
 LOCK TABLES `roller` WRITE;
 /*!40000 ALTER TABLE `roller` DISABLE KEYS */;
