@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
--- Host: localhost    Database: hotelreservation
+-- Host: localhost    Database: hms_db
 -- ------------------------------------------------------
--- Server version	8.0.29-0ubuntu0.22.04.2
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `calisanotel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `calisanotel` (
-                               `calisan_id` int DEFAULT NULL,
-                               `otel_id` int DEFAULT NULL,
-                               KEY `calisan_id` (`calisan_id`),
-                               KEY `otel_id` (`otel_id`),
-                               CONSTRAINT `calisanotel_ibfk_2` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`),
-                               CONSTRAINT `calisanotel_ibfk_3` FOREIGN KEY (`calisan_id`) REFERENCES `kullanici` (`id`)
+  `calisan_id` int DEFAULT NULL,
+  `otel_id` int DEFAULT NULL,
+  KEY `calisan_id` (`calisan_id`),
+  KEY `otel_id` (`otel_id`),
+  CONSTRAINT `calisanotel_ibfk_2` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`),
+  CONSTRAINT `calisanotel_ibfk_3` FOREIGN KEY (`calisan_id`) REFERENCES `kullanici` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,6 +38,7 @@ CREATE TABLE `calisanotel` (
 
 LOCK TABLES `calisanotel` WRITE;
 /*!40000 ALTER TABLE `calisanotel` DISABLE KEYS */;
+INSERT INTO `calisanotel` VALUES (3,4),(4,3);
 /*!40000 ALTER TABLE `calisanotel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,12 +50,12 @@ DROP TABLE IF EXISTS `kullanici`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kullanici` (
-                             `id` int NOT NULL AUTO_INCREMENT,
-                             `isim` text NOT NULL,
-                             `sifre` text NOT NULL,
-                             `email` text NOT NULL,
-                             PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `isim` text NOT NULL,
+  `sifre` text NOT NULL,
+  `email` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +64,7 @@ CREATE TABLE `kullanici` (
 
 LOCK TABLES `kullanici` WRITE;
 /*!40000 ALTER TABLE `kullanici` DISABLE KEYS */;
-INSERT INTO `kullanici` VALUES (1,'Vedat Aslan','vedat2121',''),(2,'Çetin Mutlu','cetin3838',''),(3,'Onur Kablan','onur3434','');
+INSERT INTO `kullanici` VALUES (1,'Vedat Aslan','vedat2121','vedataslan@gmail.com'),(2,'Cetin Mutlu Onal','cetin3838','cetinmutlu@gmail.com'),(3,'Onur Kablan','onur3434','onurkablan@hotmail.com'),(4,'Emir Kadir Aktas','emir12345678','emirkadir@hotmail.com');
 /*!40000 ALTER TABLE `kullanici` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,12 +76,12 @@ DROP TABLE IF EXISTS `kullanicirol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kullanicirol` (
-                                `kullanici_id` int NOT NULL,
-                                `rol_id` int NOT NULL,
-                                KEY `kullanici_id` (`kullanici_id`,`rol_id`),
-                                KEY `rol_id` (`rol_id`),
-                                CONSTRAINT `kullanicirol_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roller` (`id`),
-                                CONSTRAINT `kullanicirol_ibfk_3` FOREIGN KEY (`kullanici_id`) REFERENCES `kullanici` (`id`)
+  `kullanici_id` int NOT NULL,
+  `rol_id` int NOT NULL,
+  KEY `kullanici_id` (`kullanici_id`,`rol_id`),
+  KEY `rol_id` (`rol_id`),
+  CONSTRAINT `kullanicirol_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roller` (`id`),
+  CONSTRAINT `kullanicirol_ibfk_3` FOREIGN KEY (`kullanici_id`) REFERENCES `kullanici` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -90,7 +91,7 @@ CREATE TABLE `kullanicirol` (
 
 LOCK TABLES `kullanicirol` WRITE;
 /*!40000 ALTER TABLE `kullanicirol` DISABLE KEYS */;
-INSERT INTO `kullanicirol` VALUES (1,2);
+INSERT INTO `kullanicirol` VALUES (1,1),(2,1),(3,2),(4,2);
 /*!40000 ALTER TABLE `kullanicirol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,14 +103,14 @@ DROP TABLE IF EXISTS `musteri`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `musteri` (
-                           `id` int NOT NULL AUTO_INCREMENT,
-                           `isim` text NOT NULL,
-                           `sifre` text NOT NULL,
-                           `mail` text NOT NULL,
-                           `telefon_no` varchar(25) NOT NULL,
-                           `kimlik_no` varchar(25) NOT NULL,
-                           `adres` text NOT NULL,
-                           PRIMARY KEY (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `isim` text NOT NULL,
+  `sifre` text NOT NULL,
+  `mail` text NOT NULL,
+  `telefon_no` varchar(25) NOT NULL,
+  `kimlik_no` varchar(25) NOT NULL,
+  `adres` text NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,7 +120,7 @@ CREATE TABLE `musteri` (
 
 LOCK TABLES `musteri` WRITE;
 /*!40000 ALTER TABLE `musteri` DISABLE KEYS */;
-INSERT INTO `musteri` VALUES (1,'Çetin Mutlu Önal','cetin3838','cetinmutluonal@gmail.com','5514128010','11111111111','Antalya'),(2,'Şafak Yaral','safak3535','safakyaral1905@gmail.com','3535353535','53535353535','bergama'),(3,'Onur Kablan','onur1234','onurkablan@hotmail.com','5534379281','33333333333','Eyüp'),(4,'Oğuzhan Yaşar','ogi6161','oguzhanyasar61@gmail.com','6161616161','16161616161','rize'),(6,'Fatih Terim','fatih1905','imparator@gmail.com','5359051905','53490590534','Galatasaray');
+INSERT INTO `musteri` VALUES (1,'Fatih Terim','imparator1905','fatihterim@gmail.com','53519051953','19050537800','Istanbul'),(2,'Cem Yilmaz','cmylmz1973','cmylmz@fikirsanat.com','5463457865','93845958346','Istanbul'),(3,'Onur Timur','timur1234','onurtimur@hotmail.com','5123940506','25436475432','Izmir');
 /*!40000 ALTER TABLE `musteri` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,20 +132,20 @@ DROP TABLE IF EXISTS `oda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `oda` (
-                       `id` int NOT NULL AUTO_INCREMENT,
-                       `fiyat` int NOT NULL,
-                       `numara` int NOT NULL,
-                       `otel_id` int NOT NULL,
-                       `rezervasyon_id` int DEFAULT NULL,
-                       `yatak_sayisi` int NOT NULL,
-                       PRIMARY KEY (`id`),
-                       UNIQUE KEY `rezz` (`rezervasyon_id`),
-                       KEY `rezervasyon_id` (`rezervasyon_id`),
-                       KEY `otel_id` (`otel_id`),
-                       KEY `id` (`id`),
-                       CONSTRAINT `oda_ibfk_3` FOREIGN KEY (`rezervasyon_id`) REFERENCES `rezervasyon` (`id`),
-                       CONSTRAINT `oda_ibfk_4` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fiyat` int NOT NULL,
+  `numara` int NOT NULL,
+  `otel_id` int NOT NULL,
+  `rezervasyon_id` int DEFAULT NULL,
+  `yatak_sayisi` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rezz` (`rezervasyon_id`),
+  KEY `rezervasyon_id` (`rezervasyon_id`),
+  KEY `otel_id` (`otel_id`),
+  KEY `id` (`id`),
+  CONSTRAINT `oda_ibfk_3` FOREIGN KEY (`rezervasyon_id`) REFERENCES `rezervasyon` (`id`),
+  CONSTRAINT `oda_ibfk_4` FOREIGN KEY (`otel_id`) REFERENCES `otel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +154,7 @@ CREATE TABLE `oda` (
 
 LOCK TABLES `oda` WRITE;
 /*!40000 ALTER TABLE `oda` DISABLE KEYS */;
-INSERT INTO `oda` VALUES (1,100,2,1,NULL,0),(2,100,3,1,NULL,0),(22,200,305,1,3,0),(24,300,308,1,5,0);
+INSERT INTO `oda` VALUES (1,100,2,1,NULL,1),(2,100,3,1,NULL,2),(22,200,305,1,3,1),(24,300,308,1,5,2),(33,250,101,2,NULL,1),(34,450,102,2,NULL,2),(35,250,101,3,NULL,1),(36,475,102,3,NULL,2),(37,450,101,4,NULL,1),(38,800,102,4,NULL,2),(39,150,101,5,NULL,1),(40,275,102,5,NULL,2);
 /*!40000 ALTER TABLE `oda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,13 +166,13 @@ DROP TABLE IF EXISTS `otel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `otel` (
-                        `id` int NOT NULL AUTO_INCREMENT,
-                        `otel_isim` text NOT NULL,
-                        `sehir` text,
-                        `ilce` text,
-                        `aciklama` text,
-                        PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `otel_isim` text NOT NULL,
+  `sehir` text,
+  `ilce` text,
+  `aciklama` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +181,7 @@ CREATE TABLE `otel` (
 
 LOCK TABLES `otel` WRITE;
 /*!40000 ALTER TABLE `otel` DISABLE KEYS */;
-INSERT INTO `otel` VALUES (1,'KYK Suite',NULL,NULL,NULL);
+INSERT INTO `otel` VALUES (1,'KYK Suite','Tekirdag','Corlu','3 yildizli'),(2,'Degirmenalti Palace','Tekirdag','Degirmenalti','4 Yildizli'),(3,'EsAngeles Deluxe','Istanbul','Esenyurt','4 Yildizli'),(4,'Belek Golf Hotel','Antalya','Serik','5 Yildizli'),(5,'Kordon VIP Hotel','Izmir','Bornova','3 Yildizli');
 /*!40000 ALTER TABLE `otel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,13 +193,13 @@ DROP TABLE IF EXISTS `rezervasyon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rezervasyon` (
-                               `id` int NOT NULL AUTO_INCREMENT,
-                               `baslangic_tarihi` date NOT NULL,
-                               `bitis_tarihi` date NOT NULL,
-                               `musteri_id` int DEFAULT NULL,
-                               PRIMARY KEY (`id`),
-                               KEY `fk_rezervasyon_1_idx` (`musteri_id`),
-                               CONSTRAINT `rezervasyon_ibfk_1` FOREIGN KEY (`musteri_id`) REFERENCES `musteri` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `baslangic_tarihi` date NOT NULL,
+  `bitis_tarihi` date NOT NULL,
+  `musteri_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_rezervasyon_1_idx` (`musteri_id`),
+  CONSTRAINT `rezervasyon_ibfk_1` FOREIGN KEY (`musteri_id`) REFERENCES `musteri` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,19 +221,19 @@ DROP TABLE IF EXISTS `roller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roller` (
-                          `id` int NOT NULL,
-                          `rol_isim` varchar(50) NOT NULL,
-                          KEY `id` (`id`)
+  `id` int NOT NULL,
+  `rol_isim` varchar(50) NOT NULL,
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `roller`
+
 --
 -- insert islemleri icin
 SET foreign_key_checks = 0;
-
-
+--
 
 LOCK TABLES `roller` WRITE;
 /*!40000 ALTER TABLE `roller` DISABLE KEYS */;
@@ -249,4 +250,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-15 14:19:29
+-- Dump completed on 2022-05-18 20:16:10
