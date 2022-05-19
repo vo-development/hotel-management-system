@@ -14,7 +14,7 @@
             <TableColumn fx:id="col_tc" prefWidth="84.80001831054688" text="Tc no" />
             <TableColumn fx:id="col_adres" prefWidth="120.80003356933594" text="adres" />
             <TableColumn fx:id="col_telefon" prefWidth="91.99993896484375" text="telefon no" />
-            <TableColumn fx:id="col_main" prefWidth="128.800048828125" text="mail" />
+            <TableColumn fx:id="col_mail" prefWidth="128.800048828125" text="mail" />
             <TableColumn fx:id="col_sifre" prefWidth="92.79998779296875" text="şifre" />
          </columns>
       </TableView>

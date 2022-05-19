@@ -1,14 +1,17 @@
 package controller;
 
 import dal.dao.RoomDAO;
+import helper.ViewLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import pojo.Room;
 
 public class UserMainRoomController {
@@ -45,6 +48,17 @@ public class UserMainRoomController {
 
     @FXML
     void rezerveEt(ActionEvent event) {
+        var source = event.getSource();
+        var stage = (Stage) btn_rezervasyon.getScene().getWindow();
+
+        if (source.equals(btn_rezervasyon)) {
+            var roomController = new CustomerRoomController(0);
+            var loginWindow = ViewLoader.load("CustomerRooms", roomController);
+            stage.setScene(new Scene( loginWindow));
+        }
+        else{
+            
+        }
 
     }
 
@@ -58,13 +72,13 @@ public class UserMainRoomController {
   
     private void refreshTable(){
 
-       RoomObservableList.clear();
+    //    RoomObservableList.clear();
 
-        var rooms = RoomDAO.findAll();
+    //     var rooms = RoomDAO.findAll();
 
-       RoomObservableList.addAll(rooms);
+    //    RoomObservableList.addAll(rooms);
 
-       tbl_room.setItems(RoomObservableList);
+    //    tbl_room.setItems(RoomObservableList);
     }
 
     @FXML
