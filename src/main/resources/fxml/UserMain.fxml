@@ -37,7 +37,7 @@
                </children>
             </AnchorPane>
          </content></Tab>
-      <Tab text="Oda Düzenleme" />
-    <Tab text="Müsteri Listesi" />
+    <Tab onSelectionChanged="#tbl_musteri_listesi" text="Müsteri Listesi" />
+      <Tab onSelectionChanged="#tbl_oda_duzenleme" text="Oda Düzenleme" />
   </tabs>
 </TabPane>

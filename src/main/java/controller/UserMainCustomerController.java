@@ -2,6 +2,8 @@ package controller;
 
 import dal.dao.CustomerDAO;
 import helper.ViewLoader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -35,7 +37,9 @@ public class UserMainCustomerController extends BaseController{
 
     @FXML
     private TableView<Customer> tbl_musteri;
-    
+
+    private ObservableList<Customer> customerObservableList = FXCollections.observableArrayList();
+    private CustomerDAO CustomerDao = new CustomerDAO();
     private Customer selectedCustomer;
 
     @FXML
@@ -56,11 +60,20 @@ public class UserMainCustomerController extends BaseController{
     @FXML
     void musteriSil(ActionEvent event) {
         if(selectedCustomer != null){
-            CustomerDAO.delete(selectedCustomer.getId());
-             refreshTable();
+            CustomerDao.delete(selectedCustomer.getId());
+              refreshTable();
         }
     }
+    private void refreshTable(){
 
+        customerObservableList.clear();
+
+        var customers = CustomerDAO.findAll();
+
+        customerObservableList.addAll(customers);
+
+        tbl_musteri.setItems(customerObservableList);
+    }
     @FXML
     void initialize(){
         

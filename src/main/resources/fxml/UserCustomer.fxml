@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="627.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView prefHeight="638.0" prefWidth="594.0">
+      <TableView fx:id="tbl_musteri" prefHeight="638.0" prefWidth="594.0">
          <columns>
             <TableColumn fx:id="col_isim" prefWidth="75.0" text="isim" />
             <TableColumn fx:id="col_tc" prefWidth="84.80001831054688" text="Tc no" />

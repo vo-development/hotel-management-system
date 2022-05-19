@@ -1,5 +1,8 @@
 package controller;
 
+import dal.dao.RoomDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,6 +36,13 @@ public class UserMainRoomController {
     @FXML
     private TableView<Room> tbl_room;
 
+    private ObservableList<Room> RoomObservableList = FXCollections.observableArrayList();
+    private RoomDAO RoomDao = new RoomDAO();
+    private Room selectedRoom;
+
+
+
+
     @FXML
     void rezerveEt(ActionEvent event) {
 
@@ -40,8 +50,23 @@ public class UserMainRoomController {
 
     @FXML
     void rezerveSil(ActionEvent event) {
-
+        if(selectedRoom!= null){
+            RoomDao.delete(selectedRoom.getId());
+              refreshTable();
+        }
     }
+  
+    private void refreshTable(){
+
+       RoomObservableList.clear();
+
+        var rooms = RoomDAO.findAll();
+
+       RoomObservableList.addAll(rooms);
+
+       tbl_room.setItems(RoomObservableList);
+    }
+
     @FXML
     void initialize(){
         
