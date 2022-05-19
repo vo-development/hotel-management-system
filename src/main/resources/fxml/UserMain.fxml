@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -29,7 +28,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="686.0" layoutY="263.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="104.0" onAction="#otelSil" style="-fx-background-color: #777777;" text="Otel Sil">
+                  <Button layoutX="686.0" layoutY="263.0" mnemonicParsing="false" onAction="#otelSil" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #777777;" text="Otel Sil">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -38,69 +37,7 @@
                </children>
             </AnchorPane>
          </content></Tab>
-      <Tab text="Oda Düzenleme">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TableView prefHeight="570.0" prefWidth="521.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Numara" />
-                      <TableColumn prefWidth="100.80001831054688" text="kişi Sayısı" />
-                        <TableColumn prefWidth="91.19999694824219" text="Fiyat" />
-                        <TableColumn prefWidth="155.2000732421875" text="Rezervasyon Durumu" />
-                    </columns>
-                  </TableView>
-                  <DatePicker layoutX="621.0" layoutY="122.0" />
-                  <DatePicker layoutX="621.0" layoutY="199.0" />
-                  <Label layoutX="638.0" layoutY="80.0" prefHeight="26.0" prefWidth="129.0" text="Başlangıç Tarihi">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="659.0" layoutY="166.0" prefHeight="18.0" prefWidth="98.0" text="Bitiş Tarihi">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btn_rezervasyon" layoutX="669.0" layoutY="253.0" mnemonicParsing="false" onAction="#rezerveEt" style="-fx-background-color: #777777;" text="Rezerve Et">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="644.0" layoutY="331.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #777777;" text="Rezervasyonu İptal et">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </content></Tab>
-    <Tab text="Müsteri Listesi">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TableView prefHeight="572.0" prefWidth="594.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="isim" />
-                      <TableColumn prefWidth="84.80001831054688" text="Tc no" />
-                        <TableColumn prefWidth="120.80003356933594" text="adres" />
-                        <TableColumn prefWidth="91.99993896484375" text="telefon no" />
-                        <TableColumn prefWidth="128.800048828125" text="mail" />
-                        <TableColumn prefWidth="92.79998779296875" text="şifre" />
-                    </columns>
-                  </TableView>
-                  <Button fx:id="btn_musteri" layoutX="634.0" layoutY="147.0" mnemonicParsing="false" onAction="#MusteriKayit" style="-fx-background-color: #777777;" text="Müşteri Ekle">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="631.0" layoutY="270.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #777777;" text="Müşteri Sil">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </content></Tab>
+      <Tab text="Oda Düzenleme" />
+    <Tab text="Müsteri Listesi" />
   </tabs>
 </TabPane>

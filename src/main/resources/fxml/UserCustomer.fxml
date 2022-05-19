@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="627.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView prefHeight="638.0" prefWidth="594.0">
+         <columns>
+            <TableColumn fx:id="col_isim" prefWidth="75.0" text="isim" />
+            <TableColumn fx:id="col_tc" prefWidth="84.80001831054688" text="Tc no" />
+            <TableColumn fx:id="col_adres" prefWidth="120.80003356933594" text="adres" />
+            <TableColumn fx:id="col_telefon" prefWidth="91.99993896484375" text="telefon no" />
+            <TableColumn fx:id="col_main" prefWidth="128.800048828125" text="mail" />
+            <TableColumn fx:id="col_sifre" prefWidth="92.79998779296875" text="şifre" />
+         </columns>
+      </TableView>
+      <Button fx:id="btn_musteri" layoutX="634.0" layoutY="147.0" mnemonicParsing="false" onAction="#MusteriKayit" style="-fx-background-color: #777777;" text="Müşteri Ekle">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="631.0" layoutY="270.0" mnemonicParsing="false" onAction="#musteriSil" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #777777;" text="Müşteri Sil">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

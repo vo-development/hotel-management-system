@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="652.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tbl_room" prefHeight="570.0" prefWidth="521.0">
+         <columns>
+            <TableColumn fx:id="col_numara" prefWidth="75.0" text="Numara" />
+            <TableColumn fx:id="col_kisi" prefWidth="100.80001831054688" text="kişi Sayısı" />
+            <TableColumn fx:id="col_fiyat" prefWidth="91.19999694824219" text="Fiyat" />
+            <TableColumn fx:id="col_durum" prefWidth="155.2000732421875" text="Rezervasyon Durumu" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="dp_baslangic" layoutX="621.0" layoutY="122.0" />
+      <DatePicker fx:id="dp_bitis" layoutX="615.0" layoutY="199.0" />
+      <Label layoutX="638.0" layoutY="80.0" prefHeight="26.0" prefWidth="129.0" text="Başlangıç Tarihi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="659.0" layoutY="166.0" prefHeight="18.0" prefWidth="98.0" text="Bitiş Tarihi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_rezervasyon" layoutX="669.0" layoutY="253.0" mnemonicParsing="false" onAction="#rezerveEt" style="-fx-background-color: #777777;" text="Rezerve Et">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="644.0" layoutY="331.0" mnemonicParsing="false" onAction="#rezerveSil" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: #777777;" text="Rezervasyonu İptal et">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
