@@ -67,14 +67,14 @@ public class RoomDAO implements BaseDAO<Room>{
 				room = new Room();
 				
 				int id= result.getInt("id");
-				int price= result.getInt("price");
+				int price= result.getInt("fiyat");
 				int number = result.getInt("numara");
 				int hotelId = result.getInt("otel_id");
 				int reservationId= result.getInt("rezervasyon_id");
 				int bedQuantity= result.getInt("yatak_sayisi");
 				
 				room.setId(id);
-				room.setId(price);
+				room.setPrice(price);
 				room.setNumber(number);
 				room.setHotelId(hotelId);
 				room.setReservationId(reservationId);
@@ -185,7 +185,6 @@ public class RoomDAO implements BaseDAO<Room>{
 			stmt.close();
 
 			String updateQuery="UPDATE oda SET numara=?,otel_id=?,rezervasyon_id=?,yatak_sayisi=?,fiyat=? WHERE id=?";
-			
 			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());

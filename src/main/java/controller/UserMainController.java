@@ -45,7 +45,11 @@ public class UserMainController extends BaseController{
     @FXML
     private TableView<Hotel> tbl_hotel;
 
+    @FXML
+    private Tab tab_musteri;
 
+    @FXML
+    private Tab tab_oda;
     private ObservableList<Hotel> hotelObservableList = FXCollections.observableArrayList();
     private HotelDAO hotelDAO = new HotelDAO();
 
@@ -133,6 +137,13 @@ public class UserMainController extends BaseController{
 
     @FXML
     private void initialize(){
+
+        var roomParent = ViewLoader.load("UserRoom",new UserMainRoomController());
+        tab_oda.setContent(roomParent);
+
+        var customerParent = ViewLoader.load("UserCustomer",new UserMainCustomerController());
+        tab_musteri.setContent(customerParent);
+
         col_hotel_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         col_hotel_city.setCellValueFactory(new PropertyValueFactory<>("sehir"));
         col_hotel_town.setCellValueFactory(new PropertyValueFactory<>("ilce"));

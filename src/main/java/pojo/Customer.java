@@ -12,28 +12,28 @@ public class Customer {
 	
 	private String phoneNo;
 	
-	private String tcNO;
+	private String tcNo;
 	
 	private String adress;
 	
-	public Customer( int id,String name, String password, String mail, String phoneNo, String idNo, String adress) {
+	public Customer( int id,String name, String password, String mail, String phoneNo, String tcNo, String adress) {
 		super();
 		this.id=id;
 		this.name = name;
 		this.password = password;
 		this.mail = mail;
 		this.phoneNo = phoneNo;
-		this.tcNO = idNo;
+		this.tcNo = tcNo;
 		this.adress = adress;
 	}
 
-	public Customer( String name, String password, String mail, String phoneNo, String idNo, String adress) {
+	public Customer( String name, String password, String mail, String phoneNo, String tcNo, String adress) {
 		super();
 		this.name = name;
 		this.password = password;
 		this.mail = mail;
 		this.phoneNo = phoneNo;
-		this.tcNO = idNo;
+		this.tcNo = tcNo;
 		this.adress = adress;
 	}
 	public Customer() {
@@ -80,12 +80,12 @@ public class Customer {
 		this.phoneNo = phoneNo;
 	}
 
-	public String getTcNO() {
-		return tcNO;
+	public String getTcNo() {
+		return tcNo;
 	}
 
-	public void setTcNO(String tcNO) {
-		this.tcNO = tcNO;
+	public void setTcNo(String tcNo) {
+		this.tcNo = tcNo;
 	}
 
 	public String getAdress() {
@@ -98,7 +98,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", password=" + password + ", mail=" + mail + ", phoneNo="
-				+ phoneNo + ", tcNo=" + tcNO + ", adress=" + adress + "]";
+				+ phoneNo + ", tcNo=" + tcNo + ", adress=" + adress + "]";
 	}
 	
 	

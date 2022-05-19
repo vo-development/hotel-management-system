@@ -7,9 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -41,8 +39,10 @@ public class UserMainCustomerController extends BaseController{
     @FXML
     private TableView<Customer> tbl_musteri;
 
+
+
     private ObservableList<Customer> customerObservableList = FXCollections.observableArrayList();
-    private CustomerDAO CustomerDao = new CustomerDAO();
+    private CustomerDAO customerDAO = new CustomerDAO();
     private Customer selectedCustomer;
 
     @FXML
@@ -63,19 +63,19 @@ public class UserMainCustomerController extends BaseController{
     @FXML
     void musteriSil(ActionEvent event) {
         if(selectedCustomer != null){
-            CustomerDao.delete(selectedCustomer.getId());
+            customerDAO.delete(selectedCustomer.getId());
               refreshTable();
         }
     }
     private void refreshTable(){
 
-        // customerObservableList.clear();
+         customerObservableList.clear();
 
-        // var customers = CustomerDAO.findAll();
+         var customers = customerDAO.findAll();
 
-        // customerObservableList.addAll(customers);
+        customerObservableList.addAll(customers);
 
-        // tbl_musteri.setItems(customerObservableList);
+         tbl_musteri.setItems(customerObservableList);
     }
     @FXML
     void initialize(){
@@ -86,28 +86,17 @@ public class UserMainCustomerController extends BaseController{
         col_telefon.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
 
-        var CustomerDAO = new CustomerDAO();//yukarda da var
 
-        var hotels = CustomerDAO.findAll();
-
-
-        customerObservableList.addAll(hotels);
-
-        tbl_musteri.setItems( customerObservableList);
 
         // Tabloya tiklandigi zaman calisan method
         tbl_musteri.setOnMouseClicked
         ((MouseEvent event) -> {
-            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1){
 
                 var item = tbl_musteri.getSelectionModel().getSelectedItem();
 
                 if(item != null){
-                    Stage stage = new Stage();
-                    CustomerRoomController controller = new CustomerRoomController(item.getId());
-                    var customerRoom = ViewLoader.load("CustomerRooms",controller);
-                    stage.setScene(new Scene(customerRoom));
-                    stage.show();
+                    selectedCustomer = item;
 
                 }
 
@@ -115,7 +104,10 @@ public class UserMainCustomerController extends BaseController{
             }
         });
 
+        refreshTable();
         
     }
+
+
     
 }

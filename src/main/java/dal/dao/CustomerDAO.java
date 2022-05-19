@@ -43,7 +43,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 				customer.setPassword(password);
 				customer.setMail(mail);
 				customer.setPhoneNo(phoneNo);
-				customer.setTcNO(identityNo);
+				customer.setTcNo(identityNo);
 				customer.setAdress(adress);
 				
 			}
@@ -84,7 +84,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 				customer.setPassword(password);
 				customer.setMail(mail);
 				customer.setPhoneNo(phoneNo);
-				customer.setTcNO(identityNo);
+				customer.setTcNo(identityNo);
 				customer.setAdress(adress);
 				
 				customers.add(customer);
@@ -117,7 +117,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			statement.setObject(2, customer.getPassword());
 			statement.setObject(3, customer.getMail());
 			statement.setObject(4, customer.getPhoneNo());
-			statement.setObject(5, customer.getTcNO());
+			statement.setObject(5, customer.getTcNo());
 			statement.setObject(6, customer.getAdress());
 			
 			statement.execute();
@@ -153,7 +153,7 @@ public class CustomerDAO implements BaseDAO<Customer>{
 			statement.setObject(2, customer.getPassword());
 			statement.setObject(3, customer.getMail());
 			statement.setObject(4, customer.getPhoneNo());
-			statement.setObject(5, customer.getTcNO());
+			statement.setObject(5, customer.getTcNo());
 			statement.setObject(6, customer.getAdress());
 			statement.setObject(7, customer.getId());
 			
