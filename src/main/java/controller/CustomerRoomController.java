@@ -1,5 +1,6 @@
 package controller;
 
+import auth.CurrentCustomer;
 import dal.dao.ReservationDAO;
 import dal.dao.RoomDAO;
 import helper.ViewLoader;
@@ -104,7 +105,7 @@ public class CustomerRoomController extends BaseController {
     @FXML
     void btnOnClick(ActionEvent event) {
 
-        int sahteKullaniciId = 4;
+        int customerId = CurrentCustomer.getCustomer().getId();
 
         var beginLocalDate = dp_begin.getValue();
         var endLocalDate = dp_end.getValue();
@@ -115,7 +116,7 @@ public class CustomerRoomController extends BaseController {
             var beginDate = Date.from(beginLocalDate.atStartOfDay(defaultZoneId).toInstant());
             var endDate = Date.from(endLocalDate.atStartOfDay(defaultZoneId).toInstant());
 
-            var reservation = new Reservation(beginDate,endDate,sahteKullaniciId);
+            var reservation = new Reservation(beginDate,endDate,customerId);
 
             var rezervationId = reservationDAO.insert(reservation);
 

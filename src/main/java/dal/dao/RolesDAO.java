@@ -1,9 +1,7 @@
 package dal.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import pojo.Roles;
@@ -12,7 +10,7 @@ public class RolesDAO implements BaseDAO<Roles>{
 	
 	private PreparedStatement statement = null;
 	
-	private ResultSet result = null;
+	private ResultSet rs = null;
 	
 
 	@Override
@@ -23,12 +21,12 @@ public class RolesDAO implements BaseDAO<Roles>{
 			 String findByIdQuery="SELECT * FROM roller where id=?";
 			 statement=con.prepareStatement(findByIdQuery);
 			 statement.setInt(1, id);
-			 result =statement.executeQuery();
+			 rs =statement.executeQuery();
 			 
-			 if(result.next()) {
+			 if(rs.next()) {
 					role = new Roles();
-					int roleId = result.getInt("id");
-					String roleName = result.getString("rol_isim");
+					int roleId = rs.getInt("id");
+					String roleName = rs.getString("rol_isim");
 					
 					role.setId(roleId);
 					role.setRoleName(roleName);
@@ -41,6 +39,37 @@ public class RolesDAO implements BaseDAO<Roles>{
 		
 		return role;
 	}
+
+
+	public ArrayList<Roles> findByUser(int  userId) {
+
+
+			var roles = new ArrayList<Roles>();
+		try {
+
+
+			 String query="SELECT id,rol_isim FROM roller r LEFT JOIN  kullanicirol kc ON r.id = kc.rol_id WHERE kullanici_id =?";
+			 statement=con.prepareStatement(query);
+			 statement.setInt(1, userId);
+			 rs =statement.executeQuery();
+
+			Roles role;
+			 if(rs.next()) {
+				 role = new Roles();
+
+				 role.setId(rs.getInt("id"));
+				 role.setRoleName(rs.getString("rol_isim"));
+
+				 roles.add(role);
+			 }
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		return roles;
+	}
 		
 	@Override
 	public HashSet<Roles> findAll() {
@@ -51,15 +80,15 @@ public class RolesDAO implements BaseDAO<Roles>{
 			
 			String findAllQuery = "SELECT * from roller";
 			statement=con.prepareStatement(findAllQuery);
-			result= statement.executeQuery();
+			rs = statement.executeQuery();
 			
 			Roles role;
 			
 			
-			while(result.next()) {
+			while(rs.next()) {
 				role = new Roles();
-				int id = result.getInt("id");
-				String roleName = result.getString("rol_isim");
+				int id = rs.getInt("id");
+				String roleName = rs.getString("rol_isim");
 				
 				role.setId(id);
 				role.setRoleName(roleName);
@@ -93,10 +122,10 @@ public class RolesDAO implements BaseDAO<Roles>{
 			
 			statement.execute();
 			
-			result =statement.getGeneratedKeys();
+			rs =statement.getGeneratedKeys();
 			
-			if(result.next()) 
-				generatedKey=result.getInt(1);
+			if(rs.next())
+				generatedKey= rs.getInt(1);
 			
 		
 		} catch (SQLException e) {
@@ -122,11 +151,11 @@ public class RolesDAO implements BaseDAO<Roles>{
 			
 			statement.execute();
 			
-			result =statement.getGeneratedKeys();
+			rs =statement.getGeneratedKeys();
 			
 			
-			if(result.next()) 
-				generatedKey=result.getInt(1);
+			if(rs.next())
+				generatedKey= rs.getInt(1);
 			
 				} catch (SQLException e) {
 					e.printStackTrace();

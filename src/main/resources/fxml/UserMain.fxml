@@ -11,7 +11,7 @@
 
 <TabPane fx:id="tabPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="942.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab fx:id="tabHotelRegister" text="Otel Listesi">
+    <Tab fx:id="tab_otel" text="Otel Listesi">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>

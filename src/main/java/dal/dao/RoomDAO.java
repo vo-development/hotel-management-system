@@ -188,7 +188,13 @@ public class RoomDAO implements BaseDAO<Room>{
 			statement=con.prepareStatement(updateQuery,Statement.RETURN_GENERATED_KEYS);
 			statement.setObject(1, room.getNumber());
 			statement.setObject(2, room.getHotelId());
-			statement.setObject(3, room.getReservationId());
+
+			if(room.getReservationId() != 0)
+				statement.setObject(3, room.getReservationId());
+
+			else
+				statement.setObject(3,null);
+
 			statement.setObject(4, room.getBedQuantity());
 			statement.setObject(5, room.getPrice());
 			statement.setObject(6, room.getId());

@@ -1,5 +1,7 @@
 package controller;
 
+import auth.AuthUser;
+import auth.CurrentAuthUser;
 import dal.dao.HotelDAO;
 import helper.ViewLoader;
 import javafx.collections.FXCollections;
@@ -13,6 +15,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pojo.Hotel;
+import pojo.Roles;
 
 public class UserMainController extends BaseController{
     @FXML
@@ -24,7 +27,7 @@ public class UserMainController extends BaseController{
     private Button btn_yeniHotel;
 
     @FXML
-    private Tab tabHotelRegister;
+    private Tab tab_otel;
 
     @FXML
     private TabPane tabPanel;
@@ -137,6 +140,22 @@ public class UserMainController extends BaseController{
 
     @FXML
     private void initialize(){
+
+        var authUser = CurrentAuthUser.getAuthUser();
+        var roles = authUser.getRoles();
+        boolean isSystemUser = false;
+
+        for (Roles role:
+             roles) {
+            if(role.getRoleName().equals("Sistem Kullanıcısı")){
+                isSystemUser = true;
+            }
+        }
+
+        if(isSystemUser){
+            tabPanel.getTabs().remove(tab_musteri);
+            tabPanel.getTabs().remove(tab_otel);
+        }
 
         var roomParent = ViewLoader.load("UserRoom",new UserMainRoomController());
         tab_oda.setContent(roomParent);

@@ -57,6 +57,49 @@ public class CustomerDAO implements BaseDAO<Customer>{
 		
 		return customer;
 	}
+
+	public Customer findByMail(String mail) {
+
+		Customer customer = null;
+
+		try {
+			 String findByIdQuery="SELECT * FROM musteri where mail=?";
+
+			statement=con.prepareStatement(findByIdQuery);
+			statement.setString(1, mail);
+			result = statement.executeQuery();
+
+			if(result.next()) {
+				customer= new Customer();
+				int customerId = result.getInt("id");
+				String name= result.getString("isim");
+				String password = result.getString("sifre");
+				String phoneNo= result.getString("telefon_no");
+				String identityNo= result.getString("kimlik_no");
+				String adress= result.getString("adres");
+
+				customer.setId(customerId);
+				customer.setName(name);
+				customer.setPassword(password);
+				customer.setMail(mail);
+				customer.setPhoneNo(phoneNo);
+				customer.setTcNo(identityNo);
+				customer.setAdress(adress);
+
+			}
+
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		return customer;
+	}
+
+
+
 		
 	@Override
 	public HashSet<Customer> findAll() {

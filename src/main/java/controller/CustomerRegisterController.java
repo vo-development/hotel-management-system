@@ -129,7 +129,7 @@ public class CustomerRegisterController extends BaseController {
                 showAlert("Kayıt Eklendi!");
 
                 var stage = (Stage) txt_name.getScene().getWindow();
-                var loginWindow = ViewLoader.load("Login",new CustomerLoginController());
+                var loginWindow = ViewLoader.load("CustomerLogin",new CustomerLoginController());
                 stage.setScene(new Scene(loginWindow));
             }
 
